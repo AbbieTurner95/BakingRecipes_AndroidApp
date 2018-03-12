@@ -1,6 +1,7 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
+import android.example.com.bakingapp.data.Recipe;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

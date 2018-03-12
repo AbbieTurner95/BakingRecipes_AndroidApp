@@ -1,4 +1,4 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.data;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
@@ -17,7 +17,6 @@ public class Recipe {
     private int servings;
     @SerializedName("image")
     private String image;
-
 
     public static class RecipeResult {
         private List<Recipe> results;

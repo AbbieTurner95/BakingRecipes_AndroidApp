@@ -1,4 +1,4 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.data;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,8 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Ingredients {
 
-    @SerializedName("ingredients")
-    private String ingredients;
     @SerializedName("quantity")
     private int quantity;
     @SerializedName("measure")
@@ -17,13 +15,7 @@ public class Ingredients {
     @SerializedName("ingredient")
     private String ingredient;
 
-    public String getIngredients() {
-        return ingredients;
-    }
 
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
 
     public int getQuantity() {
         return quantity;

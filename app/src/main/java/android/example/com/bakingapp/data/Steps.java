@@ -1,4 +1,4 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.data;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,8 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Steps {
 
-    @SerializedName("steps")
-    private int steps;
     @SerializedName("steps_id")
     private int steps_id;
     @SerializedName("shortDescription")
@@ -21,13 +19,6 @@ public class Steps {
     @SerializedName("thumbnailURL")
     private String thumbnailURL;
 
-    public int getSteps() {
-        return steps;
-    }
-
-    public void setSteps(int steps) {
-        this.steps = steps;
-    }
 
     public int getSteps_id() {
         return steps_id;
