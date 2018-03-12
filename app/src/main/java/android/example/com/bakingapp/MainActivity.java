@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         if (!isOnline()) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.no_connection)

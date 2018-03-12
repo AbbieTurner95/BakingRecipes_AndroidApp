@@ -12,31 +12,42 @@
     <TextView
         android:fontFamily="@font/garineldo"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/yellow"
         android:id="@+id/recipe_title"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
-        android:textSize="30sp"
-        android:text="NUTELLA CAKE"
+        android:textSize="38sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="right|bottom"
+        android:layout_gravity="end|bottom"
         android:padding="5dp"
         android:src="@drawable/ic_cake_black_24dp"/>
 
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" >
+
+    <ImageView
+        android:src="@drawable/ic_person_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
+        android:padding="2dp"
+        android:gravity="center"
         android:fontFamily="@font/garineldo"
-        android:padding="8dp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="2.5"
+        android:textSize="25sp"
         android:id="@+id/recipe_serving"
         android:textColor="@color/white"/>
 
-
+    </LinearLayout>
 </android.support.v7.widget.CardView>

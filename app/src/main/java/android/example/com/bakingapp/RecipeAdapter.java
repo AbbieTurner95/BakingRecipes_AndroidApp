@@ -43,7 +43,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
         Recipe recipe = recipesList.get(position);
         holder.recipeTextView.setText(recipe.getName());
-        holder.recipeServings.setText("Serves : " + recipe.getServings());
+        holder.recipeServings.setText(String.format("%d", recipe.getServings()));
 
     }
 
