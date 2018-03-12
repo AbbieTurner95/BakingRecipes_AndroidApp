@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         }
 
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            layoutManager.setSpanCount(4);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             layoutManager.setSpanCount(2);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager.setSpanCount(1);
         }
         recyclerView.setLayoutManager(layoutManager);
     }
@@ -116,7 +116,10 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
     @Override
     public void onRecipeItemClick(Recipe recipe) {
-        //
+
+
+
+
     }
 
     public boolean isOnline() {

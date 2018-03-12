@@ -2,7 +2,10 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
+    app:cardElevation="5dp"
+    android:layout_margin="7dp"
     android:focusable="true"
     android:background="@color/colorAccent">
 
@@ -13,6 +16,7 @@
         android:background="@color/colorAccent"
         android:gravity="center"
         android:textSize="30sp"
+        android:text="NUTELLA CAKE"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -22,6 +26,15 @@
         android:layout_gravity="right|bottom"
         android:padding="5dp"
         android:src="@drawable/ic_cake_black_24dp"/>
+
+    <TextView
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="2.5"
+        android:id="@+id/recipe_serving"
+        android:textColor="@color/white"/>
 
 
 </android.support.v7.widget.CardView>
