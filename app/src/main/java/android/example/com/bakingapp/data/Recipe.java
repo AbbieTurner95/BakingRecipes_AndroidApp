@@ -17,13 +17,10 @@ public class Recipe {
     private int servings;
     @SerializedName("image")
     private String image;
-
-    public static class RecipeResult {
-        private List<Recipe> results;
-        public List<Recipe> getResults() {
-            return results;
-        }
-    }
+    @SerializedName("ingredients")
+    private List<Ingredients> ingredients;
+    @SerializedName("steps")
+    private List<Steps> steps;
 
 
     public String getId() {
@@ -57,5 +54,22 @@ public class Recipe {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public List<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredients> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public List<Steps> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Steps> steps) {
+        this.steps = steps;
+    }
+
 }
 

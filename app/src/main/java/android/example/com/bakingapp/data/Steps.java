@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Steps {
 
-    @SerializedName("steps_id")
-    private int steps_id;
+    @SerializedName("id")
+    private int id;
     @SerializedName("shortDescription")
     private String shortDescription;
     @SerializedName("description")
@@ -21,11 +21,11 @@ public class Steps {
 
 
     public int getSteps_id() {
-        return steps_id;
+        return id;
     }
 
     public void setSteps_id(int steps_id) {
-        this.steps_id = steps_id;
+        this.id = steps_id;
     }
 
     public String getShortDescription() {
