@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         service.getRecipes(new Callback<Recipe.RecipeResult>() {
             @Override
             public void success(Recipe.RecipeResult recipeResult, Response response) {
-                Log.i(TAG, "JSON RESPONSE : " + recipeResult.getResults() );
+                Log.i(TAG, "JSON RESPONSE : " + recipeResult.getResults());
                 recipeAdapter.setRecipesList(recipeResult.getResults());
             }
 
