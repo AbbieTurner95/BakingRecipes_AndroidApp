@@ -10,10 +10,11 @@
     android:background="@color/colorAccent">
 
     <TextView
+        android:fontFamily="@font/garineldo"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
         android:id="@+id/recipe_title"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:textSize="30sp"
         android:text="NUTELLA CAKE"
@@ -28,10 +29,11 @@
         android:src="@drawable/ic_cake_black_24dp"/>
 
     <TextView
+        android:fontFamily="@font/garineldo"
         android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:text="2.5"
         android:id="@+id/recipe_serving"
         android:textColor="@color/white"/>
