@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.example.com.bakingapp.RecipeApi.RecipesApi;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +22,6 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity implements RecipeAdapter.RecipeClickListener{
-    public static final String TAG = "LOG TAG : ";
-
     private RecipesApi service;
     private List<Recipe> recipes;
 
@@ -108,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         service.getRecipes(new Callback<List<Recipe>>() {
             @Override
             public void success(List<Recipe> recipeResult, Response response) {
-                Log.i(TAG, "JSON RESPONSE : " + recipeResult);
                recipeAdapter.setRecipesList(recipeResult);
             }
 
