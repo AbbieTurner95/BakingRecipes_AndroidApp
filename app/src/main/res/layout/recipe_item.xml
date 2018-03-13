@@ -2,17 +2,21 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
     android:focusable="true"
+    app:cardMaxElevation="5dp"
+    android:padding="2dp"
     android:background="@color/colorAccent">
 
     <TextView
+        android:fontFamily="@font/garineldo"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
         android:id="@+id/recipe_title"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -23,5 +27,28 @@
         android:padding="5dp"
         android:src="@drawable/ic_cake_black_24dp"/>
 
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_person_black_24dp"/>
+
+    <TextView
+        android:paddingTop="3dp"
+        android:paddingStart="2dp"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/garineldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/serving_size"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +45,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
         Recipe recipe = recipesList.get(position);
         holder.recipeTextView.setText(recipe.getName());
+        holder.servingTextView.setText(String.format("%d", recipe.getServings()));
     }
 
     @Override
@@ -52,10 +55,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView recipeTextView;
+        public TextView servingTextView;
 
         public RecipeViewHolder(View view){
             super(view);
             recipeTextView = view.findViewById(R.id.recipe_title);
+            servingTextView = view.findViewById(R.id.serving_size);
             view.setOnClickListener(this);
         }
 
