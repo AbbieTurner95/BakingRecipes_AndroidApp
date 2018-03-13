@@ -45,7 +45,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
         Recipe recipe = recipesList.get(position);
         holder.recipeTextView.setText(recipe.getName());
+<<<<<<< HEAD
         holder.servingTextView.setText(String.format("%d", recipe.getServings()));
+=======
+        holder.recipeServings.setText(String.format("%d", recipe.getServings()));
+
+>>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
     }
 
     @Override
@@ -55,12 +60,20 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView recipeTextView;
+<<<<<<< HEAD
         public TextView servingTextView;
+=======
+        public TextView recipeServings;
+>>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
 
         public RecipeViewHolder(View view){
             super(view);
             recipeTextView = view.findViewById(R.id.recipe_title);
+<<<<<<< HEAD
             servingTextView = view.findViewById(R.id.serving_size);
+=======
+            recipeServings = view.findViewById(R.id.recipe_serving);
+>>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
             view.setOnClickListener(this);
         }
 

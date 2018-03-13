@@ -4,6 +4,8 @@
     android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
+    app:cardElevation="5dp"
+    android:layout_margin="7dp"
     android:focusable="true"
     app:cardMaxElevation="5dp"
     android:padding="2dp"
@@ -12,24 +14,33 @@
     <TextView
         android:fontFamily="@font/garineldo"
         android:textStyle="bold"
+<<<<<<< HEAD
         android:textColor="@color/colorAccent"
         android:id="@+id/recipe_title"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:textSize="40sp"
+=======
+        android:textColor="@color/yellow"
+        android:id="@+id/recipe_title"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:textSize="38sp"
+>>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="right|bottom"
+        android:layout_gravity="end|bottom"
         android:padding="5dp"
         android:src="@drawable/ic_cake_black_24dp"/>
 
     <LinearLayout
         android:padding="5dp"
         android:orientation="horizontal"
+<<<<<<< HEAD
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -50,5 +61,26 @@
         android:textSize="20sp"/>
 
     </LinearLayout>
+=======
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" >
 
+    <ImageView
+        android:src="@drawable/ic_person_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:padding="2dp"
+        android:gravity="center"
+        android:fontFamily="@font/garineldo"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/recipe_serving"
+        android:textColor="@color/white"/>
+>>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
+
+    </LinearLayout>
 </android.support.v7.widget.CardView>
