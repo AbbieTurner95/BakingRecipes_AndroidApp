@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,26 +10,18 @@
     android:focusable="true"
     app:cardMaxElevation="5dp"
     android:padding="2dp"
-    android:background="@color/colorAccent">
+    android:background="@color/colorPrimary">
 
     <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:fontFamily="@font/garineldo"
         android:textStyle="bold"
-<<<<<<< HEAD
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:id="@+id/recipe_title"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textSize="40sp"
-=======
-        android:textColor="@color/yellow"
-        android:id="@+id/recipe_title"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center"
-        android:textSize="38sp"
->>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:textSize="40sp"/>
 
     <ImageView
         android:layout_width="50dp"
@@ -38,9 +31,8 @@
         android:src="@drawable/ic_cake_black_24dp"/>
 
     <LinearLayout
-        android:padding="5dp"
         android:orientation="horizontal"
-<<<<<<< HEAD
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -59,28 +51,6 @@
         android:id="@+id/serving_size"
         android:textStyle="bold"
         android:textSize="20sp"/>
-
     </LinearLayout>
-=======
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" >
 
-    <ImageView
-        android:src="@drawable/ic_person_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:padding="2dp"
-        android:gravity="center"
-        android:fontFamily="@font/garineldo"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:id="@+id/recipe_serving"
-        android:textColor="@color/white"/>
->>>>>>> d602b88a96ef456ca17d9cfa2584c8f5971cf96f
-
-    </LinearLayout>
 </android.support.v7.widget.CardView>

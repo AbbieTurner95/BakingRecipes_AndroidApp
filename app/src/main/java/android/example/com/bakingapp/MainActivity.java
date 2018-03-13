@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
                 .build();
 
         service = restAdapter.create(RecipesApi.class);
-
         showRecipes();
     }
 
@@ -118,9 +117,6 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
     @Override
     public void onRecipeItemClick(Recipe recipe) {
-
-
-
 
     }
 
