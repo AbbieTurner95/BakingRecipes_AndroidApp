@@ -13,12 +13,13 @@
         android:layout_height="wrap_content">
 
 
-        <FrameLayout
+        <fragment
+            android:name="android.example.com.bakingapp.RecipeFragment"
             android:background="@color/colorAccent"
             android:id="@+id/recipe_list_framelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </FrameLayout>
+        </fragment>
 
 
     </LinearLayout>

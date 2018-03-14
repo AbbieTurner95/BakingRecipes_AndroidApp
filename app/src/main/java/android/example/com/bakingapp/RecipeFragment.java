@@ -115,7 +115,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
 
     @Override
     public void onRecipeItemClick(Recipe recipe) {
-        String id = recipe.getId();
+     /*   String id = recipe.getId();
         String name = recipe.getName();
         int servings = recipe.getServings();
         List<Ingredients> ingredients = recipe.getIngredients();
@@ -136,7 +136,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
         intent.putExtra(INGRD, (Parcelable) ingredients);
         intent.putExtra(STEPS, (Parcelable) steps);
         intent.putExtra(IMG, image);
-        startActivity(intent);
+        startActivity(intent);*/
 
     }
 }

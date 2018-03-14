@@ -24,15 +24,6 @@ public class RecipeList extends AppCompatActivity {
                     .setIcon(R.drawable.ic_signal_cellular_connected_no_internet_0_bar_black_24dp)
                     .show();
         }
-
-
-        RecipeFragment recipeFragment = new RecipeFragment();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        fragmentManager.beginTransaction()
-                .add(R.id.recipe_list_framelayout, recipeFragment)
-                .commit();
     }
 
      public boolean isOnline() {
