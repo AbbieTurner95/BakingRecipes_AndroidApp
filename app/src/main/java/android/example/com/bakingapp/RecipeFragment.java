@@ -1,18 +1,23 @@
 package android.example.com.bakingapp;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.example.com.bakingapp.data.Steps;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.example.com.bakingapp.RecipeApi.RecipesApi;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +26,7 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends AppCompatActivity implements RecipeAdapter.RecipeClickListener{
+public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClickListener{
     private RecipesApi service;
     private List<Recipe> recipes;
 
@@ -32,32 +37,26 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
 
-        if (!isOnline()) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.no_connection)
-                    .setCancelable(false)
-                    .setMessage("You seem to have lost your connection, please connect and try again!")
-                    .setIcon(R.drawable.ic_signal_cellular_connected_no_internet_0_bar_black_24dp)
-                    .show();
-        }
-
-        layoutManager = new GridLayoutManager(this, 2);
-
-        recyclerView = findViewById(R.id.RecyclerView);
+        recyclerView = rootView.findViewById(R.id.recipe_list_recycler_view);
+        layoutManager = new GridLayoutManager(getContext(), 2);
+        recipeAdapter = new RecipeAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
-
-        recipeAdapter = new RecipeAdapter(this, this);
         recyclerView.setAdapter(recipeAdapter);
-
         recipes = new ArrayList<>();
         recipeAdapter.setRecipesList(recipes);
+
+        return rootView;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://d17h27t6h515a5.cloudfront.net")
@@ -69,13 +68,12 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         mBundleRecyclerViewState = new Bundle();
         mListState = recyclerView.getLayoutManager().onSaveInstanceState();
         mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, mListState);
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -117,13 +115,28 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
     @Override
     public void onRecipeItemClick(Recipe recipe) {
+        String id = recipe.getId();
+        String name = recipe.getName();
+        int servings = recipe.getServings();
+        List<Ingredients> ingredients = recipe.getIngredients();
+        List<Steps> steps = recipe.getSteps();
+        String image = recipe.getImage();
 
-    }
+        String ID = "ID";
+        String NAME = "NAME";
+        String SERVINGS = "SERVINGS";
+        String INGRD = "INGREDIENTS";
+        String STEPS = "STEPS";
+        String IMG = "IMAGE";
 
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert cm != null;
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnected();
+        Intent intent = new Intent(this, );
+        intent.putExtra(ID, id);
+        intent.putExtra(NAME, name);
+        intent.putExtra(SERVINGS, servings);
+        intent.putExtra(INGRD, (Parcelable) ingredients);
+        intent.putExtra(STEPS, (Parcelable) steps);
+        intent.putExtra(IMG, image);
+        startActivity(intent);
+
     }
 }
