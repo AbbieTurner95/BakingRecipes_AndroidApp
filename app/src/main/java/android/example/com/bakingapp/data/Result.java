@@ -14,8 +14,7 @@ public class Result {
         this.results = results;
     }
 
-    public Result() {
-    }
+    public Result() {}
 
     public List<Recipe> getResults() {
         return results;

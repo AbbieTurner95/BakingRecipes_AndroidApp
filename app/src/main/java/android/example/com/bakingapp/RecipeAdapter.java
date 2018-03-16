@@ -32,7 +32,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         notifyDataSetChanged();
     }
 
-
     @Override
     public RecipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.recipe_item, parent, false);
@@ -54,7 +53,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView recipeTextView;
         public TextView servingTextView;
-
 
         public RecipeViewHolder(View view){
             super(view);

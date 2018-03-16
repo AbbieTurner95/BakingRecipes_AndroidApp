@@ -1,9 +1,7 @@
 package android.example.com.bakingapp;
 
 import android.example.com.bakingapp.data.Recipe;
-
 import java.util.List;
-
 import retrofit.Callback;
 import retrofit.http.GET;
 

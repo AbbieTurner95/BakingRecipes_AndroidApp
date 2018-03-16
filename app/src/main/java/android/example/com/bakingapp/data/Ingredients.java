@@ -15,8 +15,6 @@ public class Ingredients {
     @SerializedName("ingredient")
     private String ingredient;
 
-
-
     public float getQuantity() {
         return quantity;
     }

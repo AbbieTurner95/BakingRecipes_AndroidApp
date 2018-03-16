@@ -19,7 +19,6 @@ public class Steps {
     @SerializedName("thumbnailURL")
     private String thumbnailURL;
 
-
     public int getSteps_id() {
         return id;
     }

@@ -22,7 +22,6 @@ public class Recipe {
     @SerializedName("steps")
     private List<Steps> steps;
 
-
     public String getId() {
         return id;
     }

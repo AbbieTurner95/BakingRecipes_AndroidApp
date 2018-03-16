@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <fragment
             android:name="android.example.com.bakingapp.RecipeFragment"
             android:background="@color/colorAccent"
@@ -20,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </fragment>
-
 
     </LinearLayout>
 </ScrollView>

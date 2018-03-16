@@ -1,10 +1,7 @@
 package android.example.com.bakingapp;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
-import android.example.com.bakingapp.data.Steps;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
