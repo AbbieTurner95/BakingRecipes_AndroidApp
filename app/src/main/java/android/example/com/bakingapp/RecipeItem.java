@@ -32,7 +32,6 @@ public class RecipeItem extends AppCompatActivity {
                     .show();
         }
 
-        Recipe recipe = bundle.getParcelable("Recipe Object");
 
         IngredientsFragment ingredientsFragment = new IngredientsFragment();
 

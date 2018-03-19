@@ -4,6 +4,7 @@ import android.content.Context;
 import android.example.com.bakingapp.data.Recipe;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,8 +32,15 @@ public class RecipeList extends AppCompatActivity {
 
         RecipeFragment recipeFragment = new RecipeFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("Recipe Object", recipe);
+        bundle.putParcelable("RecipeObject", recipe);
         recipeFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.recipe_list_framelayout, recipeFragment)
+                .commit();
 
     }
 

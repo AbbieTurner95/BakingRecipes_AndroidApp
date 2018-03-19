@@ -63,6 +63,12 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            Recipe recipeRecieved = bundle.getParcelable("RecipeObject");
+        }
+
+
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://d17h27t6h515a5.cloudfront.net")
                 .setLogLevel(RestAdapter.LogLevel.FULL)
