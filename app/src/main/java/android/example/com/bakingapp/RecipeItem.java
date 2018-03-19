@@ -4,19 +4,23 @@ import android.content.Context;
 import android.example.com.bakingapp.data.Recipe;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
+/**
+ * Created by Abbie on 16/03/2018.
+ */
 
-public class RecipeList extends AppCompatActivity {
+public class RecipeItem extends AppCompatActivity {
 
-    Recipe recipe;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_list);
+        setContentView(R.layout.activity_recipe_item);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         if (!isOnline()) {
@@ -28,13 +32,18 @@ public class RecipeList extends AppCompatActivity {
                     .show();
         }
 
+        Recipe recipe = bundle.getParcelable("Recipe Object");
 
-        RecipeFragment recipeFragment = new RecipeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("Recipe Object", recipe);
-        recipeFragment.setArguments(bundle);
+        IngredientsFragment ingredientsFragment = new IngredientsFragment();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                .commit();
 
     }
+
 
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

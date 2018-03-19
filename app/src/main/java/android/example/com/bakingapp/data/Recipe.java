@@ -1,13 +1,18 @@
 package android.example.com.bakingapp.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Abbie on 12/03/2018.
  */
 
-public class Recipe {
+public class Recipe implements Parcelable {
 
     @SerializedName("id")
     private String id;
@@ -21,6 +26,25 @@ public class Recipe {
     private List<Ingredients> ingredients;
     @SerializedName("steps")
     private List<Steps> steps;
+
+    protected Recipe(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        servings = in.readInt();
+        image = in.readString();
+    }
+
+    public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -70,5 +94,17 @@ public class Recipe {
         this.steps = steps;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeInt(servings);
+        parcel.writeString(image);
+    }
 }
 
