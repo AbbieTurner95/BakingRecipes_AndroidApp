@@ -2,35 +2,36 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:layout_margin="7dp"
+    android:layout_height="225dp"
+    android:layout_margin="5dp"
+    android:padding="2dp"
     android:clickable="true"
     android:focusable="true"
-    android:padding="2dp"
-    app:cardBackgroundColor="@color/colorAccent"
+    app:cardBackgroundColor="@color/colorAccentLighter"
     app:cardElevation="5dp"
     app:cardMaxElevation="5dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@color/colorAccent"
+        android:background="@color/colorAccentLighter"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/colorAccentLighter"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/quantity_header_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
-                android:text="TEST"
+                android:text="Quantity : "
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -39,7 +40,6 @@
                 android:id="@+id/quantity_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TEST 2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp" />
 
@@ -49,9 +49,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/colorAccentLighter"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
-                android:text="TEST"
+                android:text="Measurement : "
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -68,7 +68,6 @@
                 android:id="@+id/measure_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TEST 2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp" />
 
@@ -77,17 +76,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccentLighter"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/ingredient_header_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
-                android:text="TEST"
+                android:text="Ingredient : "
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -96,7 +95,6 @@
                 android:id="@+id/ingredient_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TEST 2"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp" />
 

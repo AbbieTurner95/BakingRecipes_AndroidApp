@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
+import android.example.com.bakingapp.data.Steps;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -25,11 +26,12 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClickListener{
+public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClickListener {
 
     private RecipesApi service;
     private List<Recipe> recipes;
-
+    private List<Ingredients> ingredients;
+    private List<Steps> steps;
     private RecyclerView recyclerView;
     private RecipeAdapter recipeAdapter;
     private GridLayoutManager layoutManager;
@@ -49,6 +51,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recipeAdapter);
         recipes = new ArrayList<>();
+
         recipeAdapter.setRecipesList(recipes);
 
         return rootView;
@@ -104,7 +107,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
         service.getRecipes(new Callback<List<Recipe>>() {
             @Override
             public void success(List<Recipe> recipeResult, Response response) {
-               recipeAdapter.setRecipesList(recipeResult);
+                recipeAdapter.setRecipesList(recipeResult);
             }
 
             @Override
@@ -116,9 +119,15 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
 
     @Override
     public void onRecipeItemClick(Recipe recipe) {
+        ingredients = new ArrayList<Ingredients>();
+        ingredients = recipe.getIngredients();
+
+        steps = new ArrayList<Steps>();
+        steps = recipe.getSteps();
 
         Intent intent = new Intent(getActivity(), RecipeItem.class);
+        intent.putParcelableArrayListExtra("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+        intent.putParcelableArrayListExtra("steps", (ArrayList<? extends Parcelable>) steps);
         startActivity(intent);
-
     }
 }

@@ -1,21 +1,27 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
-import android.example.com.bakingapp.data.Recipe;
+import android.example.com.bakingapp.data.Ingredients;
+import android.example.com.bakingapp.data.Steps;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Abbie on 16/03/2018.
  */
 
 public class RecipeItem extends AppCompatActivity {
-
-    Bundle bundle;
+    List<Ingredients> ingredients;
+    List<Steps> steps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +39,31 @@ public class RecipeItem extends AppCompatActivity {
         }
 
 
+        if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
+            ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
+            steps = this.getIntent().getParcelableArrayListExtra("steps");
+        } else {
+            Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
+        }
+
         IngredientsFragment ingredientsFragment = new IngredientsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+        ingredientsFragment.setArguments(bundle);
+
+        StepsFragment stepsFragment = new StepsFragment();
+        Bundle bundle2 = new Bundle();
+        bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
+        stepsFragment.setArguments(bundle);
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         fragmentManager.beginTransaction()
                 .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                .add(R.id.steps_fragment_holder, stepsFragment)
                 .commit();
 
     }
-
 
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

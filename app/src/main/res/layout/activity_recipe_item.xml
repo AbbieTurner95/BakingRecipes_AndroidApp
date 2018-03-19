@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    tools:context="android.example.com.bakingapp.RecipeItem">
 
+    <TextView
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scroll down to see the rest of the ingredients!"
+        android:fontFamily="@font/garineldo"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:gravity="center"/>
+
+    <ScrollView
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:id="@+id/ingredients_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
 
     <FrameLayout
+        android:name="android.example.com.bakingapp.IngredientsFragment"
         android:background="@color/colorAccent"
         android:id="@+id/ingredients_fragment_holder"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="250dp"/>
+
+    </ScrollView>
+
+    <ScrollView
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:id="@+id/steps_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <FrameLayout
+        android:name="android.example.com.bakingapp.StepsFragment"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/steps_fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    </ScrollView>
 
 
 </LinearLayout>

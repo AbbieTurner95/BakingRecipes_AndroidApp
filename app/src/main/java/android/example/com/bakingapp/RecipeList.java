@@ -30,12 +30,7 @@ public class RecipeList extends AppCompatActivity {
                     .show();
         }
 
-
         RecipeFragment recipeFragment = new RecipeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("ingredients", ingredients);
-        recipeFragment.setArguments(bundle);
-
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         fragmentManager

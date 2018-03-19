@@ -2,7 +2,6 @@ package android.example.com.bakingapp;
 
 import android.content.res.Configuration;
 import android.example.com.bakingapp.data.Ingredients;
-import android.example.com.bakingapp.data.Recipe;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -18,18 +17,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
 /**
  * Created by Abbie on 16/03/2018.
  */
 
 public class IngredientsFragment extends Fragment implements IngredientsAdapter.IngredientsListener{
-
-    private RecipeApi.RecipesApi service;
     private List<Ingredients> ingredients;
 
     private RecyclerView recyclerView;
@@ -40,9 +32,6 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
-    Ingredients ingredientsRecieved;
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,12 +39,17 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         View rootView = inflater.inflate(R.layout.ingredients_fragment, container, false);
 
         recyclerView = rootView.findViewById(R.id.recipe_ingredients_recycler_view);
-        layoutManager = new GridLayoutManager(getContext(), 1);
+        layoutManager = new GridLayoutManager(getContext(), 2);
         ingredientsAdapter = new IngredientsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ingredientsAdapter);
         ingredients = new ArrayList<>();
-        ingredientsAdapter.setIngredientsList(ingredients);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            ingredients=bundle.getParcelableArrayList("ingredients");
+            ingredientsAdapter.setIngredientsList(ingredients);
+        }
 
         return rootView;
     }
@@ -63,13 +57,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            ingredientsRecieved = bundle.getParcelable("ingredients");
-        }
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -86,7 +74,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
             }, 50);
         }
 
-        layoutManager.setSpanCount(1);
+        layoutManager.setSpanCount(2);
         recyclerView.setLayoutManager(layoutManager);
     }
 
@@ -101,7 +89,6 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
     @Override
     public void onIngredientsItemClick(Ingredients ingredients) {
-
 
     }
 }
