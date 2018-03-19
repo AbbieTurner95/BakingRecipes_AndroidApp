@@ -29,7 +29,7 @@
         android:background="@color/colorAccent"
         android:id="@+id/ingredients_fragment_holder"
         android:layout_width="match_parent"
-        android:layout_height="250dp"/>
+        android:layout_height="270dp"/>
 
     </ScrollView>
 
