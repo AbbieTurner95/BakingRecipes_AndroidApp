@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Beautiful Baking</string>
     <string name="no_connection">No Internet Connection!</string>
+    <string name="step_by_step_instructions">Step by step instructions</string>
+    <string name="scroll_down_to_see_the_rest_of_the_ingredients">Scroll down to see the rest of the ingredients!</string>
 
 
 </resources>

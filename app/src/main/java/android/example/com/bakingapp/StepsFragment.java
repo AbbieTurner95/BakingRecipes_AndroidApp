@@ -23,6 +23,7 @@ import java.util.List;
 
 public class StepsFragment extends Fragment implements StepsAdapter.StepsListener{
     private List<Steps> steps;
+
     private RecyclerView recyclerView;
     private StepsAdapter stepsAdapter;
     private GridLayoutManager layoutManager;

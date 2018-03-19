@@ -1,19 +1,14 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
-import android.example.com.bakingapp.data.Ingredients;
-import android.example.com.bakingapp.data.Recipe;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
 public class RecipeList extends AppCompatActivity {
-
-    Ingredients ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +24,6 @@ public class RecipeList extends AppCompatActivity {
                     .setIcon(R.drawable.ic_signal_cellular_connected_no_internet_0_bar_black_24dp)
                     .show();
         }
-
-        RecipeFragment recipeFragment = new RecipeFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.recipe_list_framelayout, recipeFragment)
-                .commit();
-
     }
 
     public boolean isOnline() {

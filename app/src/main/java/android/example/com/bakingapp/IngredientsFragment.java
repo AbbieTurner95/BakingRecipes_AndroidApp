@@ -47,7 +47,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            ingredients=bundle.getParcelableArrayList("ingredients");
+            ingredients = bundle.getParcelableArrayList("ingredients");
             ingredientsAdapter.setIngredientsList(ingredients);
         }
 

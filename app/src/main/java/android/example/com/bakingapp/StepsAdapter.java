@@ -18,7 +18,7 @@ import java.util.List;
 public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHolder> {
     private List<Steps> stepsList;
     private final Context mContext;
-    private final StepsAdapter.StepsListener listener;
+    private final StepsListener listener;
 
     public StepsAdapter(Context context, StepsListener listener) {
         stepsList = new ArrayList<>();
@@ -42,7 +42,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
     @Override
     public void onBindViewHolder(StepsViewHolder holder, int position) {
         Steps steps = stepsList.get(position);
-        holder.stepsID.setText(steps.getSteps_id());
+        holder.stepsID.setText(String.valueOf(steps.getSteps_id()));
     }
 
     @Override

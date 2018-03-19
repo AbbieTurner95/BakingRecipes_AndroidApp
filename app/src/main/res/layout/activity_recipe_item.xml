@@ -11,7 +11,7 @@
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scroll down to see the rest of the ingredients!"
+        android:text="@string/scroll_down_to_see_the_rest_of_the_ingredients"
         android:fontFamily="@font/garineldo"
         android:textStyle="bold"
         android:textSize="25sp"
@@ -33,7 +33,18 @@
 
     </ScrollView>
 
+    <TextView
+        android:paddingTop="15dp"
+        android:textStyle="bold"
+        android:text="@string/step_by_step_instructions"
+        android:fontFamily="@font/garineldo"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ScrollView
+        android:paddingTop="5dp"
         android:fadeScrollbars="false"
         android:scrollbars="vertical"
         android:id="@+id/steps_scrollview"

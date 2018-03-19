@@ -54,8 +54,7 @@ public class RecipeItem extends AppCompatActivity {
         StepsFragment stepsFragment = new StepsFragment();
         Bundle bundle2 = new Bundle();
         bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
-        stepsFragment.setArguments(bundle);
-
+        stepsFragment.setArguments(bundle2);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

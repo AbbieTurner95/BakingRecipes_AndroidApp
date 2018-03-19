@@ -7,16 +7,34 @@
     android:padding="5dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/colorAccentLighter"
+    app:cardBackgroundColor="@color/colorPrimary"
     app:cardElevation="5dp"
     app:cardMaxElevation="5dp">
 
-    <TextView
-        android:id="@+id/steps_id"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="2dp"
         android:gravity="center"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:text="Step "
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:fontFamily="@font/garineldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/steps_id"
+        android:gravity="center"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garineldo"
         android:textSize="30sp"/>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>
