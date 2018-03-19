@@ -28,7 +28,6 @@ import retrofit.client.Response;
  */
 
 public class IngredientsFragment extends Fragment implements IngredientsAdapter.IngredientsListener{
-    final static String DATA_RECEIVE = "data_receive";
 
     private RecipeApi.RecipesApi service;
     private List<Ingredients> ingredients;
@@ -41,7 +40,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
-    Recipe recipeRecieved;
+    Ingredients ingredientsRecieved;
 
 
     @Nullable
@@ -55,7 +54,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         ingredientsAdapter = new IngredientsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ingredientsAdapter);
-        ingredients = recipeRecieved.getIngredients();
+        ingredients = new ArrayList<>();
         ingredientsAdapter.setIngredientsList(ingredients);
 
         return rootView;
@@ -67,9 +66,8 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            recipeRecieved = bundle.getParcelable("RecipeObject");
+            ingredientsRecieved = bundle.getParcelable("ingredients");
         }
-
     }
 
 
@@ -88,11 +86,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
             }, 50);
         }
 
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            layoutManager.setSpanCount(1);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layoutManager.setSpanCount(1);
-        }
+        layoutManager.setSpanCount(1);
         recyclerView.setLayoutManager(layoutManager);
     }
 

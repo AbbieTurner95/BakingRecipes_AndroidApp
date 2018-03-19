@@ -1,6 +1,7 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
+import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,7 +13,7 @@ import android.os.Bundle;
 
 public class RecipeList extends AppCompatActivity {
 
-    Recipe recipe;
+    Ingredients ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class RecipeList extends AppCompatActivity {
 
         RecipeFragment recipeFragment = new RecipeFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("RecipeObject", recipe);
+        bundle.putParcelable("ingredients", ingredients);
         recipeFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -14,8 +14,5 @@ public class RecipeApi {
     public interface RecipesApi {
         @GET("/topher/2017/May/59121517_baking/baking.json")
         void getRecipes(Callback<List<Recipe>> callback);
-
-        @GET("/topher/2017/May/59121517_baking/baking.json")
-        void getIngredients(Callback<List<Ingredients>> callback);
     }
 }

@@ -1,107 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
-    app:cardElevation="5dp"
     android:layout_margin="7dp"
+    android:clickable="true"
     android:focusable="true"
-    app:cardMaxElevation="5dp"
     android:padding="2dp"
-    android:background="@color/colorAccent">
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="5dp">
 
     <LinearLayout
-        android:background="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-    <TextView
-        android:text="TEST"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:paddingEnd="10dp"
-        android:id="@+id/quantity_header_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/quantity_header_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dp"
+                android:text="TEST"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:text="TEST 2"
-        android:textSize="16sp"
-        android:id="@+id/quantity_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"/>
+            <TextView
+                android:id="@+id/quantity_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEST 2"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/measure_header_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dp"
+                android:text="TEST"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/measure_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEST 2"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/ingredient_header_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dp"
+                android:text="TEST"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ingredient_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEST 2"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    <TextView
-        android:text="TEST"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:paddingEnd="10dp"
-        android:id="@+id/measure_header_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:text="TEST 2"
-        android:textSize="16sp"
-        android:id="@+id/measure_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"/>
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:padding="10dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:text="TEST"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingEnd="10dp"
-        android:id="@+id/ingredient_header_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:text="TEST 2"
-        android:textSize="16sp"
-        android:id="@+id/ingredient_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"/>
-
-    </LinearLayout>
-
-
-
-</LinearLayout>
 </android.support.v7.widget.CardView>

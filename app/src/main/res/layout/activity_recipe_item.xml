@@ -3,15 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
 
 
     <FrameLayout
+        android:background="@color/colorAccent"
         android:id="@+id/ingredients_fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
 
     <FrameLayout
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/steps_fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
