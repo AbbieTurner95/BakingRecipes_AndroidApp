@@ -41,6 +41,8 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
+    Recipe recipeRecieved;
+
 
     @Nullable
     @Override
@@ -53,7 +55,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         ingredientsAdapter = new IngredientsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ingredientsAdapter);
-        ingredients = new ArrayList<>();
+        ingredients = recipeRecieved.getIngredients();
         ingredientsAdapter.setIngredientsList(ingredients);
 
         return rootView;
@@ -65,17 +67,9 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            Recipe recipeRecieved = bundle.getParcelable("RecipeObject");
+            recipeRecieved = bundle.getParcelable("RecipeObject");
         }
 
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://d17h27t6h515a5.cloudfront.net")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-
-        service = restAdapter.create(RecipeApi.RecipesApi.class);
-        showIngredients();
     }
 
 
@@ -111,25 +105,8 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     }
 
 
-    public void showIngredients() {
-        service.getIngredients(new Callback<List<Ingredients>>() {
-            @Override
-            public void success(List<Ingredients> ingredientsResult, Response response) {
-                ingredientsAdapter.setIngredientsList(ingredientsResult);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                error.printStackTrace();
-            }
-        });
-    }
-
-
-
     @Override
     public void onIngredientsItemClick(Ingredients ingredients) {
-
 
 
     }

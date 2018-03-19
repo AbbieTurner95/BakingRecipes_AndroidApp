@@ -105,6 +105,8 @@ public class Recipe implements Parcelable {
         parcel.writeString(name);
         parcel.writeInt(servings);
         parcel.writeString(image);
+        parcel.writeTypedList(ingredients);
+        parcel.writeTypedList(steps);
     }
 }
 
