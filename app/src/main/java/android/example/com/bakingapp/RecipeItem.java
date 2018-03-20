@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,15 +20,52 @@ import java.util.List;
  * Created by Abbie on 16/03/2018.
  */
 
-public class RecipeItem extends AppCompatActivity {
-    List<Ingredients> ingredients;
-    List<Steps> steps;
+public class RecipeItem extends AppCompatActivity implements StepsFragment.OnStepsClickListener{
+    ArrayList<Ingredients> ingredients;
+    ArrayList<Steps> steps;
+
+    Boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_item);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        if(findViewById(R.id.linear_layout_tablet_holder) != null){
+
+            mTwoPane = true;
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            IngredientsFragment ingredientsFragment = new IngredientsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("ingredients", ingredients);
+            ingredientsFragment.setArguments(bundle);
+
+            fragmentManager.beginTransaction()
+                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                    .commit();
+
+            StepsFragment stepsFragment = new StepsFragment();
+            Bundle bundle2 = new Bundle();
+            bundle2.putParcelableArrayList("steps", steps);
+            stepsFragment.setArguments(bundle2);
+
+            fragmentManager.beginTransaction()
+                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                    .commit();
+
+            DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                    .commit();
+
+        } else {
+
+            mTwoPane = false;
+        }
+
 
         if (!isOnline()) {
             new AlertDialog.Builder(this)
@@ -48,12 +86,12 @@ public class RecipeItem extends AppCompatActivity {
 
         IngredientsFragment ingredientsFragment = new IngredientsFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+        bundle.putParcelableArrayList("ingredients", ingredients);
         ingredientsFragment.setArguments(bundle);
 
         StepsFragment stepsFragment = new StepsFragment();
         Bundle bundle2 = new Bundle();
-        bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
+        bundle2.putParcelableArrayList("steps", steps);
         stepsFragment.setArguments(bundle2);
 
 
@@ -70,5 +108,17 @@ public class RecipeItem extends AppCompatActivity {
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnected();
+    }
+
+    @Override
+    public void onStepSelected(View view) {
+
+        if(mTwoPane){
+
+
+        } else {
+
+
+        }
     }
 }

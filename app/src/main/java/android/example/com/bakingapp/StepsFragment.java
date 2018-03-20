@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,12 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
+    OnStepsClickListener mCallback;
+
+    public interface OnStepsClickListener {
+        void onStepSelected(View view);
+    }
+
 
     @Nullable
     @Override
@@ -45,6 +52,13 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(stepsAdapter);
         steps = new ArrayList<>();
+
+        recyclerView.setOnClickListener(new AdapterView.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onStepSelected(view);
+            }
+        });
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {

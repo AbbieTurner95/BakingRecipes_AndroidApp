@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-    <FrameLayout
+    <fragment
         android:name="android.example.com.bakingapp.IngredientsFragment"
         android:background="@color/colorAccent"
         android:id="@+id/ingredients_fragment_holder"
@@ -43,22 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ScrollView
-        android:paddingTop="5dp"
-        android:fadeScrollbars="false"
-        android:scrollbars="vertical"
-        android:id="@+id/steps_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    <FrameLayout
+
+    <fragment
         android:name="android.example.com.bakingapp.StepsFragment"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/steps_fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    </ScrollView>
 
 
 </LinearLayout>
