@@ -21,8 +21,8 @@ import java.util.List;
  */
 
 public class RecipeItem extends AppCompatActivity implements StepsFragment.OnStepsClickListener{
-    ArrayList<Ingredients> ingredients;
-    ArrayList<Steps> steps;
+    List<Ingredients> ingredients;
+    List<Steps> steps;
 
     Boolean mTwoPane;
 
@@ -44,18 +44,17 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
                     .commit();
 
         } else {
-
             mTwoPane = false;
         }
 
         IngredientsFragment ingredientsFragment = new IngredientsFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("ingredients", ingredients);
+        bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredients);
         ingredientsFragment.setArguments(bundle);
 
         StepsFragment stepsFragment = new StepsFragment();
         Bundle bundle2 = new Bundle();
-        bundle2.putParcelableArrayList("steps", steps);
+        bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
         stepsFragment.setArguments(bundle2);
 
 
