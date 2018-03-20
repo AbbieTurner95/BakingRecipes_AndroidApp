@@ -64,6 +64,23 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
         } else {
 
             mTwoPane = false;
+
+            IngredientsFragment ingredientsFragment = new IngredientsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("ingredients", ingredients);
+            ingredientsFragment.setArguments(bundle);
+
+            StepsFragment stepsFragment = new StepsFragment();
+            Bundle bundle2 = new Bundle();
+            bundle2.putParcelableArrayList("steps", steps);
+            stepsFragment.setArguments(bundle2);
+
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                    .add(R.id.steps_fragment_holder, stepsFragment)
+                    .commit();
         }
 
 
@@ -76,31 +93,12 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
                     .show();
         }
 
-
         if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
             ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
             steps = this.getIntent().getParcelableArrayListExtra("steps");
         } else {
             Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
         }
-
-        IngredientsFragment ingredientsFragment = new IngredientsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("ingredients", ingredients);
-        ingredientsFragment.setArguments(bundle);
-
-        StepsFragment stepsFragment = new StepsFragment();
-        Bundle bundle2 = new Bundle();
-        bundle2.putParcelableArrayList("steps", steps);
-        stepsFragment.setArguments(bundle2);
-
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.ingredients_fragment_holder, ingredientsFragment)
-                .add(R.id.steps_fragment_holder, stepsFragment)
-                .commit();
-
     }
 
     public boolean isOnline() {
