@@ -97,7 +97,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             layoutManager.setSpanCount(2);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layoutManager.setSpanCount(1);
+            layoutManager.setSpanCount(2);
         }
         recyclerView.setLayoutManager(layoutManager);
     }

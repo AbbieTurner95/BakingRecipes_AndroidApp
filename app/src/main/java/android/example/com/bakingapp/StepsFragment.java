@@ -1,6 +1,8 @@
 package android.example.com.bakingapp;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +38,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
     OnStepsClickListener mCallback;
 
     public interface OnStepsClickListener {
-        void onStepSelected(View view);
+        void onStepSelected(List<Steps> steps);
     }
 
 
@@ -56,7 +58,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         recyclerView.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCallback.onStepSelected(view);
+                mCallback.onStepSelected(steps);
             }
         });
 

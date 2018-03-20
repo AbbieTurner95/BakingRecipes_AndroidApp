@@ -26,8 +26,8 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
         this.listener = listener;
     }
 
-    public void setStepsList(List<Steps> ingredientsList){
-        this.stepsList = ingredientsList;
+    public void setStepsList(List<Steps> stepsList){
+        this.stepsList = stepsList;
         notifyDataSetChanged();
     }
 

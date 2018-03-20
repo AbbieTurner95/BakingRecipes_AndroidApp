@@ -1,6 +1,7 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
 import android.net.ConnectivityManager;
@@ -10,7 +11,6 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,13 +32,24 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
         setContentView(R.layout.activity_recipe_item);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+
+        if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
+            ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
+            steps = this.getIntent().getParcelableArrayListExtra("steps");
+        } else {
+            Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
+        }
+
         if(findViewById(R.id.linear_layout_tablet_holder) != null){
 
             mTwoPane = true;
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
 
             DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+            Bundle bundle3 = new Bundle();
+            bundle3.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
             fragmentManager.beginTransaction()
                     .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
                     .commit();
@@ -74,12 +85,6 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
                     .show();
         }
 
-        if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
-            ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
-            steps = this.getIntent().getParcelableArrayListExtra("steps");
-        } else {
-            Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
-        }
     }
 
     public boolean isOnline() {
@@ -90,14 +95,16 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
     }
 
     @Override
-    public void onStepSelected(View view) {
+    public void onStepSelected(List<Steps> steps) {
 
-        if(mTwoPane){
+        DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction()
+                .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                .commit();
 
 
-        } else {
-
-
-        }
     }
 }
