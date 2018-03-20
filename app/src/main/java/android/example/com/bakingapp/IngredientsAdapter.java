@@ -27,11 +27,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     }
 
     public void setIngredientsList(List<Ingredients> ingredientsList){
-        this.ingredientsList.clear();
-        this.ingredientsList.addAll(ingredientsList);
+        this.ingredientsList = ingredientsList;
         notifyDataSetChanged();
     }
-
 
     @Override
     public IngredientsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,8 +47,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     @Override
     public int getItemCount() {
-            return ingredientsList.size();
-        }
+        return ingredientsList == null ? 0 : ingredientsList.size();
+    }
 
         public class IngredientsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView quantityTextView;

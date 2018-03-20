@@ -26,12 +26,10 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
         this.listener = listener;
     }
 
-    public void setStepsList(List<Steps> stepsList) {
-        this.stepsList.clear();
-        this.stepsList.addAll(stepsList);
+    public void setStepsList(List<Steps> ingredientsList){
+        this.stepsList = ingredientsList;
         notifyDataSetChanged();
     }
-
 
     @Override
     public StepsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,9 +43,10 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsViewHol
         holder.stepsID.setText(String.valueOf(steps.getSteps_id()));
     }
 
+
     @Override
     public int getItemCount() {
-        return stepsList.size();
+        return stepsList == null ? 0 : stepsList.size();
     }
 
     public class StepsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

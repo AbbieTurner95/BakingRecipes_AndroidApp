@@ -38,24 +38,6 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
             FragmentManager fragmentManager = getSupportFragmentManager();
 
-            IngredientsFragment ingredientsFragment = new IngredientsFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("ingredients", ingredients);
-            ingredientsFragment.setArguments(bundle);
-
-            fragmentManager.beginTransaction()
-                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
-                    .commit();
-
-            StepsFragment stepsFragment = new StepsFragment();
-            Bundle bundle2 = new Bundle();
-            bundle2.putParcelableArrayList("steps", steps);
-            stepsFragment.setArguments(bundle2);
-
-            fragmentManager.beginTransaction()
-                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
-                    .commit();
-
             DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
             fragmentManager.beginTransaction()
                     .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
@@ -64,24 +46,24 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
         } else {
 
             mTwoPane = false;
-
-            IngredientsFragment ingredientsFragment = new IngredientsFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("ingredients", ingredients);
-            ingredientsFragment.setArguments(bundle);
-
-            StepsFragment stepsFragment = new StepsFragment();
-            Bundle bundle2 = new Bundle();
-            bundle2.putParcelableArrayList("steps", steps);
-            stepsFragment.setArguments(bundle2);
-
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .add(R.id.ingredients_fragment_holder, ingredientsFragment)
-                    .add(R.id.steps_fragment_holder, stepsFragment)
-                    .commit();
         }
+
+        IngredientsFragment ingredientsFragment = new IngredientsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("ingredients", ingredients);
+        ingredientsFragment.setArguments(bundle);
+
+        StepsFragment stepsFragment = new StepsFragment();
+        Bundle bundle2 = new Bundle();
+        bundle2.putParcelableArrayList("steps", steps);
+        stepsFragment.setArguments(bundle2);
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.ingredients_fragment_holder, ingredientsFragment)
+                .add(R.id.steps_fragment_holder, stepsFragment)
+                .commit();
 
 
         if (!isOnline()) {
