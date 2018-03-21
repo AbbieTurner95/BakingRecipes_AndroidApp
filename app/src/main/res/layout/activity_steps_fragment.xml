@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <fragment
+        <FrameLayout
             android:name="android.example.com.bakingapp.DetailedStepsFragment"
             android:background="@color/colorAccent"
             android:id="@+id/recipe_step_detail_framelayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </fragment>
+        </FrameLayout>
 
     </LinearLayout>
 </ScrollView>
