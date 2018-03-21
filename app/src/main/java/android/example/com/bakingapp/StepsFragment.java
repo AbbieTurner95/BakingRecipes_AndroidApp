@@ -106,6 +106,18 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
 
     @Override
     public void onStepsItemClick(Steps steps) {
+
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+
+        if(tabletSize = false)
+        {
+            Intent intent = new Intent(getActivity().getApplicationContext(), DetailedStepsActivity.class);
+            Bundle bundle2 = new Bundle();
+            bundle2.putParcelable("steps", steps);
+            startActivity(intent);
+
+        } else {
+
         FragmentManager fragmentManager = this.getFragmentManager();
 
         DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
@@ -115,5 +127,8 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         fragmentManager.beginTransaction()
                 .replace(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
                 .commit();
+
+        }
+
     }
 }

@@ -100,14 +100,7 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
     @Override
     public void onStepSelected(List<Steps> steps) {
-        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 
-        if(tabletSize = false){
-            Intent intent = new Intent(this, DetailedStepsActivity.class);
-            Bundle bundle2 = new Bundle();
-            bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
-            startActivity(intent);
-        }
 
     }
 }
