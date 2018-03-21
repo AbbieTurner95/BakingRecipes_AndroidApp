@@ -2,7 +2,7 @@ package android.example.com.bakingapp;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.example.com.bakingapp.data.Ingredients;
+
 import android.example.com.bakingapp.data.Steps;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -79,16 +80,16 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-         if (mBundleRecyclerViewState != null) {
-             new Handler().postDelayed(new Runnable() {
+        if (mBundleRecyclerViewState != null) {
+            new Handler().postDelayed(new Runnable() {
 
-                 @Override
-                 public void run() {
-                     mListState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
-                     recyclerView.getLayoutManager().onRestoreInstanceState(mListState);
-                 }
-             }, 50);
-         }
+                @Override
+                public void run() {
+                    mListState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
+                    recyclerView.getLayoutManager().onRestoreInstanceState(mListState);
+                }
+            }, 50);
+        }
 
         layoutManager.setSpanCount(2);
         recyclerView.setLayoutManager(layoutManager);
@@ -105,6 +106,14 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
 
     @Override
     public void onStepsItemClick(Steps steps) {
+        FragmentManager fragmentManager = this.getFragmentManager();
+
+        DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("step",steps);
+        detailedStepsFragment.setArguments(bundle);
+        fragmentManager.beginTransaction()
+                .replace(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                .commit();
     }
 }
-

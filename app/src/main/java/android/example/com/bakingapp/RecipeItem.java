@@ -45,14 +45,7 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
             mTwoPane = true;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
 
-            DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
-            Bundle bundle3 = new Bundle();
-            bundle3.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
-            fragmentManager.beginTransaction()
-                    .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
-                    .commit();
 
         } else {
             mTwoPane = false;
