@@ -109,11 +109,12 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
 
         boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 
-        if(tabletSize = false)
+        if(tabletSize == false)
         {
             Intent intent = new Intent(getActivity().getApplicationContext(), DetailedStepsActivity.class);
             Bundle bundle2 = new Bundle();
             bundle2.putParcelable("steps", steps);
+            intent.putExtra("steps", bundle2);
             startActivity(intent);
 
         } else {
@@ -122,7 +123,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
 
         DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("step",steps);
+        bundle.putParcelable("steps",steps);
         detailedStepsFragment.setArguments(bundle);
         fragmentManager.beginTransaction()
                 .replace(R.id.detailed_steps_fragment_holder, detailedStepsFragment)

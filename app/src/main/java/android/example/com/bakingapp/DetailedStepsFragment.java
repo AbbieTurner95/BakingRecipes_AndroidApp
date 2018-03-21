@@ -32,7 +32,7 @@ public class DetailedStepsFragment extends Fragment{
 
 
         if (this.getArguments() != null) {
-            step = this.getArguments().getParcelable("step");
+            step = this.getArguments().getParcelable("steps");
             description.setText(step.getDescription());
         }
 

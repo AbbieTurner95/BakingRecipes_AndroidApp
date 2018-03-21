@@ -44,7 +44,7 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
             DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
             Bundle bundle = new Bundle();
-            bundle.putParcelable("step",steps.get(0));
+            bundle.putParcelable("steps",steps.get(0));
             detailedStepsFragment.setArguments(bundle);
 
             FragmentManager fragmentManager = getSupportFragmentManager();

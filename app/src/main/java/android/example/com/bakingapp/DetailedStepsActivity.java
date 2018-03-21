@@ -5,11 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+
 /**
  * Created by Abbie on 21/03/2018.
  */
 
 public class DetailedStepsActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,6 +20,7 @@ public class DetailedStepsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+        detailedStepsFragment.setArguments(getIntent().getBundleExtra("steps"));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
