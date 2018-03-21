@@ -1,6 +1,7 @@
 package android.example.com.bakingapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
@@ -23,7 +24,6 @@ import java.util.List;
 public class RecipeItem extends AppCompatActivity implements StepsFragment.OnStepsClickListener{
     List<Ingredients> ingredients;
     List<Steps> steps;
-
     Boolean mTwoPane;
 
     @Override
@@ -42,12 +42,23 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
         if(findViewById(R.id.linear_layout_tablet_holder) != null){
 
+            DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("step",steps.get(0));
+            detailedStepsFragment.setArguments(bundle);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                    .commit();
+
             mTwoPane = true;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
 
-
         } else {
+
             mTwoPane = false;
         }
 
@@ -89,15 +100,14 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
     @Override
     public void onStepSelected(List<Steps> steps) {
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 
-        DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        fragmentManager.beginTransaction()
-                .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
-                .commit();
-
+        if(tabletSize = false){
+            Intent intent = new Intent(this, DetailedStepsActivity.class);
+            Bundle bundle2 = new Bundle();
+            bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
+            startActivity(intent);
+        }
 
     }
 }

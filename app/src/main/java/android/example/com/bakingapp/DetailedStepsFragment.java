@@ -19,24 +19,26 @@ import java.util.List;
  */
 
 public class DetailedStepsFragment extends Fragment{
-
     Steps step;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.detailed_step_fragment, container, false);
 
-        TextView textView = rootView.findViewById(R.id.detailed_textview);
+        TextView description = rootView.findViewById(R.id.detailed_textview);
+        TextView stepidTextview = rootView.findViewById(R.id.step_id_textview);
 
-        if (this.getArguments()!=null){
+
+        if (this.getArguments() != null) {
             step = this.getArguments().getParcelable("step");
-            textView.setText(step.getDescription());
-
-        } else {
-            Toast.makeText(getContext(),"failed",Toast.LENGTH_LONG).show();
+            description.setText(step.getDescription());
         }
+
+        stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
 
         return rootView;
     }
+
 }

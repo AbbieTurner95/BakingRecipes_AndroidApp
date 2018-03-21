@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/detailed_textview"
+        android:fontFamily="@font/garineldo"
+        android:text="1"
+        android:gravity="center"
         android:textSize="40sp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="DETAILED STEP FRAGMENT"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/step_id_textview"
+        android:padding="5dp"/>
+
+    <TextView
+        android:padding="5dp"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/select_a_step_to_get_started"
+        android:fontFamily="@font/garineldo"
+        android:gravity="center"
+        android:id="@+id/detailed_textview"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
