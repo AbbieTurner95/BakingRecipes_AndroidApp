@@ -21,7 +21,7 @@
     <TextView
         android:text="Step "
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:fontFamily="@font/garineldo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -33,7 +33,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garineldo"
-        android:textSize="30sp"/>
+        android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/short_descrip"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/garineldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
