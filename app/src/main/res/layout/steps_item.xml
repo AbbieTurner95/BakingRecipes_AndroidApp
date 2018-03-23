@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
 
     <TextView
-        android:text="Step "
+        android:text="@string/step"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:fontFamily="@font/garineldo"

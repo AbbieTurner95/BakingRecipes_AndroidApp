@@ -4,4 +4,8 @@
     <string name="step_by_step_instructions">Step by step instructions</string>
     <string name="scroll_down_to_see_the_rest_of_the_ingredients">Scroll down to see the rest of the ingredients!</string>
     <string name="seperator_string">:</string>
+    <string name="step">Step</string>
+    <string name="ingredient">Ingredient :</string>
+    <string name="measurement">Measurement :</string>
+    <string name="quantity">Quantity :</string>
 </resources>

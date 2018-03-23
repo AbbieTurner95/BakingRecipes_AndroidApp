@@ -7,11 +7,10 @@
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:fontFamily="@font/garineldo"
-        android:text="1"
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
         android:textSize="40sp"
@@ -21,14 +20,11 @@
         android:padding="5dp"
         android:textStyle="bold"/>
 
-
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="252dp"
         android:focusable="true" />
-
-
 
     <TextView
         android:padding="5dp"
