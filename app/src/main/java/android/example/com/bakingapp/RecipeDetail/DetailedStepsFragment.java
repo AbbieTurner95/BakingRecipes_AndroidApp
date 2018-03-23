@@ -1,5 +1,6 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeDetail;
 
+import android.example.com.bakingapp.R;
 import android.example.com.bakingapp.data.Steps;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,6 +52,8 @@ public class DetailedStepsFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.detailed_step_fragment, container, false);
 
         TextView description = rootView.findViewById(R.id.detailed_textview);
+
+
         TextView stepidTextview = rootView.findViewById(R.id.step_id_textview);
         simpleExoPlayerView = rootView.findViewById(R.id.video_view);
 

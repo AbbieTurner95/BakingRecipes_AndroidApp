@@ -1,7 +1,9 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeList;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.example.com.bakingapp.R;
+import android.example.com.bakingapp.RecipeDetail.RecipeItem;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
 import android.example.com.bakingapp.data.Steps;
@@ -13,7 +15,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.example.com.bakingapp.RecipeApi.RecipesApi;
+import android.example.com.bakingapp.Service.RecipeApi.RecipesApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

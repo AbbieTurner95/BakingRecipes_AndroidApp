@@ -1,18 +1,23 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeDetail;
 
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.example.com.bakingapp.data.Ingredients;
+
+import android.example.com.bakingapp.R;
+import android.example.com.bakingapp.data.Steps;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,34 +26,48 @@ import java.util.List;
  * Created by Abbie on 16/03/2018.
  */
 
-public class IngredientsFragment extends Fragment implements IngredientsAdapter.IngredientsListener{
-    private List<Ingredients> ingredients;
+public class StepsFragment extends Fragment implements StepsAdapter.StepsListener {
+    private List<Steps> steps;
 
     private RecyclerView recyclerView;
-    private IngredientsAdapter ingredientsAdapter;
+    private StepsAdapter stepsAdapter;
     private GridLayoutManager layoutManager;
 
     private final String KEY_RECYCLER_STATE = "recycler_state";
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
 
+    OnStepsClickListener mCallback;
+
+    public interface OnStepsClickListener {
+        void onStepSelected(List<Steps> steps);
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.ingredients_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.steps_fragment, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recipe_ingredients_recycler_view);
-        layoutManager = new GridLayoutManager(getContext(), 2);
-        ingredientsAdapter = new IngredientsAdapter(getContext(), this);
+        recyclerView = rootView.findViewById(R.id.recipe_steps_recycler_view);
+        layoutManager = new GridLayoutManager(getContext(), 1);
+        stepsAdapter = new StepsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(ingredientsAdapter);
-        ingredients = new ArrayList<>();
+        recyclerView.setAdapter(stepsAdapter);
+        steps = new ArrayList<>();
+
+        recyclerView.setOnClickListener(new AdapterView.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onStepSelected(steps);
+            }
+        });
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            ingredients = bundle.getParcelableArrayList("ingredients");
-            ingredientsAdapter.setIngredientsList(ingredients);
+            steps = bundle.getParcelableArrayList("steps");
+            stepsAdapter.setStepsList(steps);
         }
 
         return rootView;
@@ -62,7 +81,6 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
         if (mBundleRecyclerViewState != null) {
             new Handler().postDelayed(new Runnable() {
 
@@ -88,7 +106,31 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
 
     @Override
-    public void onIngredientsItemClick(Ingredients ingredients) {
+    public void onStepsItemClick(Steps steps) {
+
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
+
+        if(tabletSize == false)
+        {
+            Intent intent = new Intent(getActivity().getApplicationContext(), DetailedStepsActivity.class);
+            Bundle bundle2 = new Bundle();
+            bundle2.putParcelable("steps", steps);
+            intent.putExtra("steps", bundle2);
+            startActivity(intent);
+
+        } else {
+
+        FragmentManager fragmentManager = this.getFragmentManager();
+
+        DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("steps",steps);
+        detailedStepsFragment.setArguments(bundle);
+        fragmentManager.beginTransaction()
+                .replace(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                .commit();
+
+        }
 
     }
 }

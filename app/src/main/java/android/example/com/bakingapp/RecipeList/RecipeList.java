@@ -1,6 +1,7 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeList;
 
 import android.content.Context;
+import android.example.com.bakingapp.R;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;

@@ -1,8 +1,11 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeDetail;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.example.com.bakingapp.R;
+import android.example.com.bakingapp.RecipeDetail.DetailedStepsFragment;
+import android.example.com.bakingapp.RecipeDetail.IngredientsFragment;
+import android.example.com.bakingapp.RecipeDetail.StepsFragment;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
 import android.net.ConnectivityManager;

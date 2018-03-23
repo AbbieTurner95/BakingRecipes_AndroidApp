@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecipeList">
+        <activity android:name=".RecipeList.RecipeList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RecipeItem"/>
-        <activity android:name=".DetailedStepsActivity"/>
+        <activity android:name=".RecipeDetail.RecipeItem"/>
+        <activity android:name=".RecipeDetail.DetailedStepsActivity"/>
     </application>
 
 </manifest>

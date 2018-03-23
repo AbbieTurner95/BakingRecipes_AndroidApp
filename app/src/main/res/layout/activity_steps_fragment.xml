@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="android.example.com.bakingapp.DetailedStepsActivity">
+    tools:context="android.example.com.bakingapp.RecipeDetail.DetailedStepsActivity">
 
     <LinearLayout
         android:background="@color/colorAccent"

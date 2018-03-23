@@ -1,5 +1,6 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeDetail;
 
+import android.example.com.bakingapp.R;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;

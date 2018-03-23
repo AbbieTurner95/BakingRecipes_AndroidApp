@@ -1,9 +1,8 @@
-package android.example.com.bakingapp;
+package android.example.com.bakingapp.RecipeDetail;
 
 import android.content.Context;
+import android.example.com.bakingapp.R;
 import android.example.com.bakingapp.data.Steps;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
