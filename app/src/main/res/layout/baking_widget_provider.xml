@@ -1,12 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorAccentLighter"
     android:padding="@dimen/widget_margin">
 
     <TextView
         android:id="@+id/wigdet_title"
-        android:text="Ingredients - "
+        tools:text="Ingredients "
         android:gravity="center"
         android:fontFamily="@font/garineldo"
         android:textSize="20sp"
@@ -16,13 +19,13 @@
         android:layout_height="wrap_content" />
 
 
-   <TextView
-       android:id="@+id/baking_widget_ingredients"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:textColor="@color/colorPrimary"
-       android:textSize="18sp"
-       android:fontFamily="@font/garineldo"
-       android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/baking_widget_ingredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:fontFamily="@font/garineldo"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.example.com.bakingapp.RecipeList.RecipeList;
 import android.support.v7.widget.RecyclerView;
 import android.widget.RemoteViews;
+import android.widget.TextView;
 
 /**
  * Implementation of App Widget functionality.
@@ -22,7 +23,7 @@ public class BakingWidgetProvider extends AppWidgetProvider {
         Intent intent = new Intent(context, RecipeList.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-        views.setOnClickPendingIntent(R.id.baking_widget_icon, pendingIntent);
+        views.setOnClickPendingIntent(R.id.recipe_list_recycler_view_widget, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
