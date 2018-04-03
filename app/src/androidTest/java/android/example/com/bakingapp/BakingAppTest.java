@@ -4,18 +4,14 @@ import android.example.com.bakingapp.RecipeDetail.RecipeItem;
 import android.example.com.bakingapp.RecipeList.RecipeList;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -41,7 +37,7 @@ public class BakingAppTest {
             = new IntentsTestRule<>(RecipeList.class);
 
     @Test
-    public void A_checkRecipeListShows() {
+    public void A_checkRecipeListShowsTest() {
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
@@ -51,7 +47,7 @@ public class BakingAppTest {
     }
 
     @Test
-    public void B_testRecipeItemIsLaunched() {
+    public void B_recipeItemIsLaunchedTest() {
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
@@ -63,14 +59,14 @@ public class BakingAppTest {
 
 
     @Test
-    public void C_testExoPlayerLoads() {
+    public void C_simpleExoPlayerTest() {
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
         onView(allOf(withId(R.id.recipe_list_recycler_view)))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
-        onView(withId(R.id.detail_llayout))
+        onView(withId(R.id.detailed_steps_fragment_holder))
                 .check(matches(isDisplayed()));
 
         onView(withId(R.id.video_view))
