@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
@@ -66,7 +67,6 @@ public class RecipeStepsTest {
                                 withClassName(is("android.widget.RelativeLayout")),
                                 0)));
         recyclerView3.perform(actionOnItemAtPosition(6, click()));
-
     }
 
     private static Matcher<View> childAtPosition(

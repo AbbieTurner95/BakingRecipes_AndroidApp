@@ -1,5 +1,6 @@
 package android.example.com.bakingapp.RecipeDetail;
 
+import android.content.Context;
 import android.example.com.bakingapp.R;
 import android.example.com.bakingapp.data.Steps;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -24,6 +26,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Abbie on 20/03/2018.
@@ -39,6 +42,8 @@ public class DetailedStepsFragment extends Fragment{
     private boolean playerStopped = false;
     private long playerStopPosition;
 
+    Context context;
+
     String videoURL;
     String thumbnailURL;
 
@@ -52,27 +57,31 @@ public class DetailedStepsFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.detailed_step_fragment, container, false);
 
         TextView description = rootView.findViewById(R.id.detailed_textview);
-
-
+        ImageView thumbnailImage = rootView.findViewById(R.id.image_thumbnail);
         TextView stepidTextview = rootView.findViewById(R.id.step_id_textview);
         simpleExoPlayerView = rootView.findViewById(R.id.video_view);
 
         if (this.getArguments() != null) {
             step = this.getArguments().getParcelable("steps");
             description.setText(step.getDescription());
+
         }
 
         stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
-
 
         videoURL = step.getVideoURL();
         thumbnailURL = step.getThumbnailURL();
 
         if (!videoURL.equals("")) {
             initializePlayer(Uri.parse(videoURL));
+            thumbnailImage.setVisibility(View.GONE);
         } else {
             assert simpleExoPlayerView != null;
             simpleExoPlayerView.setVisibility(View.GONE);
+            thumbnailImage.setVisibility(View.VISIBLE);
+            Picasso.get()
+                    .load(thumbnailURL)
+                    .into(thumbnailImage);
         }
 
         return rootView;

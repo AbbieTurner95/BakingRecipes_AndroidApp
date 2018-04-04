@@ -19,6 +19,7 @@ import android.example.com.bakingapp.Service.RecipeApi.RecipesApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
     private List<Ingredients> ingredients;
     private List<Steps> steps;
     private RecyclerView recyclerView;
+    private ImageView recipeImage;
     private RecipeAdapter recipeAdapter;
     private GridLayoutManager layoutManager;
     private final String KEY_RECYCLER_STATE = "recycler_state";
@@ -47,6 +49,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
 
         View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
 
+        recipeImage = rootView.findViewById(R.id.recipe_image);
         recyclerView = rootView.findViewById(R.id.recipe_list_recycler_view);
         layoutManager = new GridLayoutManager(getContext(), 2);
         recipeAdapter = new RecipeAdapter(getContext(), this);
