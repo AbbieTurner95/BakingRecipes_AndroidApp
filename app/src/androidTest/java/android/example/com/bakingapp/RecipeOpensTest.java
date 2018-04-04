@@ -4,9 +4,8 @@ import android.example.com.bakingapp.RecipeDetail.RecipeItem;
 import android.example.com.bakingapp.RecipeList.RecipeList;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.runner.AndroidJUnit4;
-
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -20,11 +19,10 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.AllOf.allOf;
 
 
@@ -35,7 +33,7 @@ import static org.hamcrest.core.AllOf.allOf;
  */
 @RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)       //allows user to choose order of execution of methods within test class
-public class BakingAppTest {
+public class RecipeOpensTest {
 
     @Rule
     public IntentsTestRule<RecipeList> mRecipeListTestRule = new IntentsTestRule<>(RecipeList.class);
@@ -65,38 +63,4 @@ public class BakingAppTest {
 
         intended(hasComponent(RecipeItem.class.getName()));
     }
-
-
-   @Test
-    public void D_simpleExoPlayerTest() {
-        B_openRecipeItemTest();
-
-        //get detailed steps single view fragment
-
-        onView(withId(R.id.detailed_steps_fragment_holder))
-                .check(matches(isDisplayed()));
-
-        onData(withId(R.id.video_view))
-                .check(matches(isDisplayed()));
-
-    }
-
-   @Test
-    public void E_stepRecyclerViewTest(){
-       B_openRecipeItemTest();
-
-       onView(allOf(withId(R.id.recipe_steps_recycler_view)))
-               .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-    }
-
-   @Test
-    public void F_ingredientsRecyclerViewTest() {
-        B_openRecipeItemTest();
-
-       //get ingredients single view fragment
-
-       onView(allOf(withId(R.id.recipe_ingredients_recycler_view)))
-               .perform(swipeUp());
-
-   }
 }
