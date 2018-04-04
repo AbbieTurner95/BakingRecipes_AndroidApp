@@ -8,12 +8,16 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
@@ -30,11 +34,11 @@ import static org.hamcrest.core.AllOf.allOf;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)       //allows user to choose order of execution of methods within test class
 public class BakingAppTest {
 
     @Rule
-    public IntentsTestRule<RecipeList> mRecipeListTestRule
-            = new IntentsTestRule<>(RecipeList.class);
+    public IntentsTestRule<RecipeList> mRecipeListTestRule = new IntentsTestRule<>(RecipeList.class);
 
     @Test
     public void A_checkRecipeListShowsTest() {
@@ -47,33 +51,52 @@ public class BakingAppTest {
     }
 
     @Test
-    public void B_recipeItemIsLaunchedTest() {
+    public void B_openRecipeItemTest(){
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
         onView(allOf(withId(R.id.recipe_list_recycler_view)))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+    }
+
+    @Test
+    public void C_recipeItemIsLaunchedTest() {
+        B_openRecipeItemTest();
 
         intended(hasComponent(RecipeItem.class.getName()));
     }
 
 
-    @Test
-    public void C_simpleExoPlayerTest() {
-        onView(withId(R.id.list_scroll_view))
-                .perform(click());
+   @Test
+    public void D_simpleExoPlayerTest() {
+        B_openRecipeItemTest();
 
-        onView(allOf(withId(R.id.recipe_list_recycler_view)))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        //get detailed steps single view fragment
 
         onView(withId(R.id.detailed_steps_fragment_holder))
                 .check(matches(isDisplayed()));
 
-        onView(withId(R.id.video_view))
+        onData(withId(R.id.video_view))
                 .check(matches(isDisplayed()));
 
-        onView(allOf(withId(R.id.video_view),
-                withClassName(is(SimpleExoPlayerView.class.getName()))));
-
     }
+
+   @Test
+    public void E_stepRecyclerViewTest(){
+       B_openRecipeItemTest();
+
+       onView(allOf(withId(R.id.recipe_steps_recycler_view)))
+               .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+    }
+
+   @Test
+    public void F_ingredientsRecyclerViewTest() {
+        B_openRecipeItemTest();
+
+       //get ingredients single view fragment
+
+       onView(allOf(withId(R.id.recipe_ingredients_recycler_view)))
+               .perform(swipeUp());
+
+   }
 }
