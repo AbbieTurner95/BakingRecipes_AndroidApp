@@ -27,12 +27,12 @@ As a working Android developer, you often have to create and implement apps wher
 
 *In this project you will:*
 
-* Use MediaPlayer/Exoplayer to display videos.
-* Handle error cases in Android.
-* Add a widget to your app experience.
-* Leverage a third-party library in your app.
-* Use Fragments to create a responsive design that works on phones and tablets.
-
+- [x] Use MediaPlayer/Exoplayer to display videos.
+- [x] Handle error cases in Android.
+- [x] Add a widget to your app experience.
+- [x] Leverage a third-party library in your app.
+- [x] Use Fragments to create a responsive design that works on phones and tablets.
+- [x] UI Test using Espresso
 
 
 **Libraries Used**
@@ -40,5 +40,9 @@ As a working Android developer, you often have to create and implement apps wher
 * [Retrofit](https://github.com/square/retrofit) 
 * [ExoPlayer](https://github.com/google/ExoPlayer)  
 * [Espresso](https://developer.android.com/training/testing/espresso/index.html) 
+
+** Font Used **
+
+* [Garineldo](https://www.1001freefonts.com/garineldo.font) 
 
 
