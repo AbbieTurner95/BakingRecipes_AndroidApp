@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,25 +70,31 @@ public class DetailedStepsFragment extends Fragment{
         videoURL = step.getVideoURL();
         thumbnailURL = step.getThumbnailURL();
 
-        if (!videoURL.equals("")) {
-            initializePlayer(Uri.parse(videoURL));
+        if (!TextUtils.isEmpty(thumbnailURL)) {
             thumbnailImage.setVisibility(View.GONE);
 
         } else {
-            assert simpleExoPlayerView != null;
-            simpleExoPlayerView.setVisibility(View.GONE);
             thumbnailImage.setVisibility(View.VISIBLE);
 
-      /*      if(!thumbnailURL.equals("")) {
+            if(!thumbnailURL.equals("")) {
                 Picasso.get()
                         .load(thumbnailURL)
-                        .error(R.drawable.noimage)
+                        .error(R.drawable.ic_cake_black_24dp)
                         .into(thumbnailImage);
             } else {
                 Picasso.get()
-                        .load(R.drawable.noimage)
+                        .load(R.drawable.ic_cake_black_24dp)
                         .into(thumbnailImage);
-            }*/
+            }
+        }
+
+        if (!TextUtils.isEmpty(videoURL)) {
+            initializePlayer(Uri.parse(videoURL));
+            thumbnailImage.setVisibility(View.GONE);
+        } else {
+            assert simpleExoPlayerView != null;
+            simpleExoPlayerView.setVisibility(View.GONE);
+            releasePlayer();
         }
 
         return rootView;
@@ -96,7 +103,8 @@ public class DetailedStepsFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        initializePlayer(Uri.parse(videoURL));
+        if (!TextUtils.isEmpty(videoURL))
+            initializePlayer(Uri.parse(videoURL));
     }
 
     @Override

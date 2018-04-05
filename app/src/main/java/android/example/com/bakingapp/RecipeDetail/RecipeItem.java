@@ -65,12 +65,12 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
         IngredientsFragment ingredientsFragment = new IngredientsFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredients);
+        bundle.putParcelableArrayList("ingredients", (ArrayList<Ingredients>)ingredients);
         ingredientsFragment.setArguments(bundle);
 
         StepsFragment stepsFragment = new StepsFragment();
         Bundle bundle2 = new Bundle();
-        bundle2.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) steps);
+        bundle2.putParcelableArrayList("steps", (ArrayList<Steps>) steps);
         stepsFragment.setArguments(bundle2);
 
 
