@@ -79,11 +79,11 @@ public class DetailedStepsFragment extends Fragment{
             if(!thumbnailURL.equals("")) {
                 Picasso.get()
                         .load(thumbnailURL)
-                        .error(R.drawable.ic_cake_black_24dp)
+                        .error(R.drawable.noimage)
                         .into(thumbnailImage);
             } else {
                 Picasso.get()
-                        .load(R.drawable.ic_cake_black_24dp)
+                        .load(R.drawable.noimage)
                         .into(thumbnailImage);
             }
         }
