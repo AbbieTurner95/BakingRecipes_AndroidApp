@@ -33,8 +33,6 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_item);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
         if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
             ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");

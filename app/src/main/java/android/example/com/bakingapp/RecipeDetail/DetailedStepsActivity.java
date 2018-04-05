@@ -18,7 +18,6 @@ public class DetailedStepsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steps_fragment);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
         detailedStepsFragment.setArguments(getIntent().getBundleExtra("steps"));

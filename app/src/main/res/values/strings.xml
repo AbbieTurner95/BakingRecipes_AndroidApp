@@ -10,4 +10,5 @@
     <string name="quantity">Quantity :</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="detailed_step_title">Detailed Step</string>
 </resources>

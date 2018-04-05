@@ -20,7 +20,6 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static android.support.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
@@ -34,7 +33,7 @@ public class RecipeStepsTest {
     public ActivityTestRule<RecipeList> mActivityTestRule = new ActivityTestRule<>(RecipeList.class);
 
     @Test
-    public void recipeStepsTest() {
+    public void recipeListTest() {
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recipe_list_recycler_view),
                         childAtPosition(
@@ -53,20 +52,8 @@ public class RecipeStepsTest {
                         childAtPosition(
                                 withClassName(is("android.widget.RelativeLayout")),
                                 0)));
-        recyclerView2.perform(actionOnItemAtPosition(4, click()));
+        recyclerView2.perform(actionOnItemAtPosition(3, click()));
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction recyclerView3 = onView(
-                allOf(withId(R.id.recipe_steps_recycler_view),
-                        childAtPosition(
-                                withClassName(is("android.widget.RelativeLayout")),
-                                0)));
-        recyclerView3.perform(actionOnItemAtPosition(6, click()));
     }
 
     private static Matcher<View> childAtPosition(
