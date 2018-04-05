@@ -1,6 +1,6 @@
 # Baking_App
 
-Udacity Project 3 - Baking Application
+Udacity Project 3 - Baking Application - [IN PROGRESS]
 
 **Project Overview**
 
@@ -20,23 +20,6 @@ As a working Android developer, you often have to create and implement apps wher
 - [x] Leverage a third-party library in your app.
 - [x] Use Fragments to create a responsive design that works on phones and tablets.
 - [x] UI Test using Espresso
-
-
-
-## Phone View 
-
-![screen shot 2018-04-04 at 09 51 03](https://user-images.githubusercontent.com/33655422/38298139-76199520-37ee-11e8-8121-28482429d0be.png)
-![screen shot 2018-04-04 at 09 55 46](https://user-images.githubusercontent.com/33655422/38298140-76781028-37ee-11e8-8efb-6828c747a632.png)
-![screen shot 2018-04-04 at 09 56 03](https://user-images.githubusercontent.com/33655422/38298141-76965af6-37ee-11e8-97b8-186ce081c40e.png)
-
-
-## Tablet View 
-
-
-![screen shot 2018-04-04 at 10 00 46](https://user-images.githubusercontent.com/33655422/38298444-45e2319a-37ef-11e8-9e12-014c05fbd561.png)
-![screen shot 2018-04-04 at 10 01 47](https://user-images.githubusercontent.com/33655422/38298445-45fe605e-37ef-11e8-84d0-91152d4ab80d.png)
-![screen shot 2018-04-04 at 10 02 02](https://user-images.githubusercontent.com/33655422/38298447-46140fda-37ef-11e8-928b-7609579cf58e.png)
-
 
 
 **Libraries Used**
