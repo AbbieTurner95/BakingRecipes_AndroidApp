@@ -42,13 +42,10 @@ public class DetailedStepsFragment extends Fragment{
     private boolean playerStopped = false;
     private long playerStopPosition;
 
-    Context context;
-
     String videoURL;
     String thumbnailURL;
 
-    public DetailedStepsFragment() {
-    }
+    public DetailedStepsFragment() { }
 
     @Nullable
     @Override
@@ -59,12 +56,12 @@ public class DetailedStepsFragment extends Fragment{
         TextView description = rootView.findViewById(R.id.detailed_textview);
         ImageView thumbnailImage = rootView.findViewById(R.id.image_thumbnail);
         TextView stepidTextview = rootView.findViewById(R.id.step_id_textview);
+
         simpleExoPlayerView = rootView.findViewById(R.id.video_view);
 
         if (this.getArguments() != null) {
             step = this.getArguments().getParcelable("steps");
             description.setText(step.getDescription());
-
         }
 
         stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
@@ -75,18 +72,26 @@ public class DetailedStepsFragment extends Fragment{
         if (!videoURL.equals("")) {
             initializePlayer(Uri.parse(videoURL));
             thumbnailImage.setVisibility(View.GONE);
+
         } else {
             assert simpleExoPlayerView != null;
             simpleExoPlayerView.setVisibility(View.GONE);
             thumbnailImage.setVisibility(View.VISIBLE);
-            Picasso.get()
-                    .load(thumbnailURL)
-                    .into(thumbnailImage);
+
+      /*      if(!thumbnailURL.equals("")) {
+                Picasso.get()
+                        .load(thumbnailURL)
+                        .error(R.drawable.noimage)
+                        .into(thumbnailImage);
+            } else {
+                Picasso.get()
+                        .load(R.drawable.noimage)
+                        .into(thumbnailImage);
+            }*/
         }
 
         return rootView;
     }
-
 
     @Override
     public void onStart() {
@@ -121,7 +126,9 @@ public class DetailedStepsFragment extends Fragment{
             simpleExoPlayerView.setPlayer(exoPlayer);
 
             String userAgent = Util.getUserAgent(getContext(), String.valueOf(R.string.app_name));
-            MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(getContext(),userAgent), new DefaultExtractorsFactory(),null,null);
+            MediaSource mediaSource = new ExtractorMediaSource(mediaUri,
+                    new DefaultDataSourceFactory(getContext(),userAgent),
+                    new DefaultExtractorsFactory(),null,null);
             exoPlayer.prepare(mediaSource);
 
 
