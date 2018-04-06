@@ -23,6 +23,7 @@ import java.util.List;
 public class RecipeItem extends AppCompatActivity{
     private List<Ingredients> ingredients;
     private List<Steps> steps;
+    private Boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,6 @@ public class RecipeItem extends AppCompatActivity{
         } else {
             Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
         }
-
-        Boolean mTwoPane;
 
         if(findViewById(R.id.linear_layout_tablet_holder) != null){
 
@@ -52,7 +51,6 @@ public class RecipeItem extends AppCompatActivity{
                     .commit();
 
             mTwoPane = true;
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         } else {
             mTwoPane = false;
         }
@@ -66,7 +64,6 @@ public class RecipeItem extends AppCompatActivity{
         Bundle bundle2 = new Bundle();
         bundle2.putParcelableArrayList("steps", (ArrayList<Steps>) steps);
         stepsFragment.setArguments(bundle2);
-
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -83,7 +80,6 @@ public class RecipeItem extends AppCompatActivity{
                     .setIcon(R.drawable.ic_signal_cellular_connected_no_internet_0_bar_black_24dp)
                     .show();
         }
-
     }
 
     private boolean isOnline() {

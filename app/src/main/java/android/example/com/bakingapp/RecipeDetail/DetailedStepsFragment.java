@@ -43,6 +43,9 @@ public class DetailedStepsFragment extends Fragment{
 
     private String videoURL;
 
+    long mLastPosition;
+    boolean mPlayVideoWhenForegrounded;
+
     public DetailedStepsFragment() { }
 
     @Nullable
@@ -98,18 +101,32 @@ public class DetailedStepsFragment extends Fragment{
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("LAST POSITION", mLastPosition);
+        outState.putBoolean("Play video when foreground", mPlayVideoWhenForegrounded);
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
-        if (!TextUtils.isEmpty(videoURL))
+        if (!TextUtils.isEmpty(videoURL)) {
             initializePlayer(Uri.parse(videoURL));
+        }
+
+        exoPlayer.seekTo(mLastPosition);
+        exoPlayer.setPlayWhenReady(mPlayVideoWhenForegrounded);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+
         if(exoPlayer != null) {
+            mPlayVideoWhenForegrounded = exoPlayer.getPlayWhenReady();
             playerStopPosition = exoPlayer.getCurrentPosition();
             playerStopped = true;
+            exoPlayer.setPlayWhenReady(false);
             releasePlayer();
         }
     }
