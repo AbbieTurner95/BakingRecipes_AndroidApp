@@ -43,7 +43,6 @@ public class DetailedStepsFragment extends Fragment{
 
     private String videoURL;
 
-    long mLastPosition;
     boolean mPlayVideoWhenForegrounded;
 
     public DetailedStepsFragment() { }
@@ -103,7 +102,7 @@ public class DetailedStepsFragment extends Fragment{
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong("LAST POSITION", mLastPosition);
+        outState.putLong("LAST POSITION", playerStopPosition);
         outState.putBoolean("Play video when foreground", mPlayVideoWhenForegrounded);
     }
 
@@ -114,7 +113,7 @@ public class DetailedStepsFragment extends Fragment{
             initializePlayer(Uri.parse(videoURL));
         }
 
-        exoPlayer.seekTo(mLastPosition);
+        exoPlayer.seekTo(playerStopPosition);
         exoPlayer.setPlayWhenReady(mPlayVideoWhenForegrounded);
     }
 

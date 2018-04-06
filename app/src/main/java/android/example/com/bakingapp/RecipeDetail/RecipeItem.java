@@ -30,6 +30,10 @@ public class RecipeItem extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_item);
 
+        if (savedInstanceState != null) {
+            return;
+        }
+
         if (getIntent().getExtras().get("ingredients") != null || getIntent().getExtras().get("steps") != null) {
             ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
             steps = this.getIntent().getParcelableArrayListExtra("steps");
