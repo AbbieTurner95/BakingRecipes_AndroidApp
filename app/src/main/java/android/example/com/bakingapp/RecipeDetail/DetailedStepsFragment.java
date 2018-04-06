@@ -1,6 +1,5 @@
 package android.example.com.bakingapp.RecipeDetail;
 
-import android.content.Context;
 import android.example.com.bakingapp.R;
 import android.example.com.bakingapp.data.Steps;
 import android.net.Uri;
@@ -39,12 +38,10 @@ public class DetailedStepsFragment extends Fragment{
     private SimpleExoPlayerView simpleExoPlayerView;
     private SimpleExoPlayer exoPlayer;
 
-    private long exoCurrentPosition = 0;
     private boolean playerStopped = false;
     private long playerStopPosition;
 
-    String videoURL;
-    String thumbnailURL;
+    private String videoURL;
 
     public DetailedStepsFragment() { }
 
@@ -68,7 +65,7 @@ public class DetailedStepsFragment extends Fragment{
         stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
 
         videoURL = step.getVideoURL();
-        thumbnailURL = step.getThumbnailURL();
+        String thumbnailURL = step.getThumbnailURL();
 
         if (!TextUtils.isEmpty(thumbnailURL)) {
             thumbnailImage.setVisibility(View.GONE);
@@ -140,6 +137,7 @@ public class DetailedStepsFragment extends Fragment{
             exoPlayer.prepare(mediaSource);
 
 
+            long exoCurrentPosition = 0;
             if (exoCurrentPosition != 0 && !playerStopped){
                 exoPlayer.seekTo(exoCurrentPosition);
             } else {

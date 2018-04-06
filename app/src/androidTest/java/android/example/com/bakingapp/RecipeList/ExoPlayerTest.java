@@ -38,45 +38,52 @@ public class ExoPlayerTest {
     public void exoPlayerTest() {
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.recipe_list_recycler_view),
-                        childAtPosition(
-                                withId(R.id.recipe_list_framelayout),
+                        childAtPosition(withId(R.id.recipe_list_framelayout),
                                 0)));
-        recyclerView.perform(actionOnItemAtPosition(2, click()));
-
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        recyclerView.perform(actionOnItemAtPosition(2, click()));
+
+        try {
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         ViewInteraction recyclerView2 = onView(
                 allOf(withId(R.id.recipe_steps_recycler_view),
-                        childAtPosition(
-                                withClassName(is("android.widget.RelativeLayout")),
+                        childAtPosition(withClassName(is("android.widget.RelativeLayout")),
                                 0)));
-        recyclerView2.perform(actionOnItemAtPosition(2, click()));
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.exo_play), withContentDescription("Play"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatImageButton.perform(click());
+        recyclerView2.perform(actionOnItemAtPosition(2, click()));
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatImageButton = onView(allOf(withId(R.id.exo_play),
+                withContentDescription("Play"),
+                        childAtPosition(childAtPosition(
+                                withClassName(is("android.widget.LinearLayout")),
+                                0), 4), isDisplayed()));
+
+        appCompatImageButton.perform(click());
     }
 
     private static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
-
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {

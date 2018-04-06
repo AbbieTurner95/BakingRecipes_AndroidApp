@@ -25,8 +25,6 @@ import retrofit.client.Response;
 
 public class WidgetActivity extends AppCompatActivity implements RecipeAdapter.RecipeClickListener {
     private RecipeApi.RecipesApi service;
-    private List<Recipe> recipes;
-    private List<Ingredients> ingredients;
 
     private RecyclerView recyclerView;
     private RecipeAdapter recipeAdapter;
@@ -34,7 +32,7 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAdapter.R
     private final String KEY_RECYCLER_STATE = "recycler_state";
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
-    int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+    private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     private AppWidgetManager widgetManager;
     private RemoteViews views;
 
@@ -49,7 +47,7 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAdapter.R
         recipeAdapter = new RecipeAdapter(this, this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recipeAdapter);
-        recipes = new ArrayList<>();
+        List<Recipe> recipes = new ArrayList<>();
 
         recipeAdapter.setRecipesList(recipes);
 
@@ -72,7 +70,6 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAdapter.R
         }
         if (mAppWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) {
             finish();
-            return;
         }
     }
 
@@ -124,9 +121,9 @@ public class WidgetActivity extends AppCompatActivity implements RecipeAdapter.R
     @Override
     public void onRecipeItemClick(Recipe recipe) {
         views.setTextViewText(R.id.wigdet_title, recipe.getName());
-        ingredients=recipe.getIngredients();
+        List<Ingredients> ingredients = recipe.getIngredients();
         StringBuilder ing= new StringBuilder();
-        for (Ingredients ingredient:ingredients){
+        for (Ingredients ingredient: ingredients){
             ing.append("- ")
                     .append(ingredient.getIngredient())
                     .append(" ")

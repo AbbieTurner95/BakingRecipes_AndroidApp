@@ -13,6 +13,7 @@
     android:background="@color/colorPrimary">
     
     <ImageView
+        android:contentDescription="@string/image_of_recipe_item"
         android:id="@+id/recipe_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -29,6 +30,7 @@
         android:textSize="40sp"/>
 
     <ImageView
+        android:contentDescription="@string/pink_cake_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="end|bottom"
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content">
 
     <ImageView
+        android:contentDescription="@string/person_icon_next_to_serving_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_person_black_24dp"/>

@@ -1,6 +1,5 @@
 package android.example.com.bakingapp.Service;
 
-import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
 import java.util.List;
 import retrofit.Callback;

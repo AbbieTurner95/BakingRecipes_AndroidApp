@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
 public class RecipeList extends AppCompatActivity {
 
     @Override
@@ -26,7 +25,7 @@ public class RecipeList extends AppCompatActivity {
         }
     }
 
-    public boolean isOnline() {
+    private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();

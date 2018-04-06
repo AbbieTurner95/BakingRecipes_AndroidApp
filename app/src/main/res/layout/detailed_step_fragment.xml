@@ -23,6 +23,7 @@
         android:textStyle="bold"/>
 
     <ImageView
+        android:contentDescription="@string/no_images_available"
         android:id="@+id/image_thumbnail"
         android:layout_width="match_parent"
         android:layout_height="252dp" />

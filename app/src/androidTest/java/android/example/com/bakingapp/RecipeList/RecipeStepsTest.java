@@ -34,31 +34,39 @@ public class RecipeStepsTest {
 
     @Test
     public void recipeListTest() {
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.recipe_list_recycler_view),
-                        childAtPosition(
-                                withId(R.id.recipe_list_framelayout),
+        ViewInteraction recyclerView = onView(allOf(withId(R.id.recipe_list_recycler_view),
+                        childAtPosition(withId(R.id.recipe_list_framelayout),
                                 0)));
-        recyclerView.perform(actionOnItemAtPosition(0, click()));
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction recyclerView2 = onView(
-                allOf(withId(R.id.recipe_steps_recycler_view),
-                        childAtPosition(
-                                withClassName(is("android.widget.RelativeLayout")),
-                                0)));
+        recyclerView.perform(actionOnItemAtPosition(0, click()));
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction recyclerView2 = onView(allOf(withId(R.id.recipe_steps_recycler_view),
+                        childAtPosition(withClassName(is("android.widget.RelativeLayout")), 0)));
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         recyclerView2.perform(actionOnItemAtPosition(3, click()));
 
     }
 
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
+    private static Matcher<View> childAtPosition(final Matcher<View> parentMatcher, final int position) {
         return new TypeSafeMatcher<View>() {
             @Override
             public void describeTo(Description description) {

@@ -17,7 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,22 +26,13 @@ import java.util.List;
  */
 
 public class StepsFragment extends Fragment implements StepsAdapter.StepsListener {
-    private List<Steps> steps;
 
     private RecyclerView recyclerView;
-    private StepsAdapter stepsAdapter;
     private GridLayoutManager layoutManager;
 
     private final String KEY_RECYCLER_STATE = "recycler_state";
     private static Bundle mBundleRecyclerViewState;
     private Parcelable mListState = null;
-
-    OnStepsClickListener mCallback;
-
-    public interface OnStepsClickListener {
-        void onStepSelected(List<Steps> steps);
-    }
-
 
     @Nullable
     @Override
@@ -52,17 +42,10 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
 
         recyclerView = rootView.findViewById(R.id.recipe_steps_recycler_view);
         layoutManager = new GridLayoutManager(getContext(), 1);
-        stepsAdapter = new StepsAdapter(getContext(), this);
+        StepsAdapter stepsAdapter = new StepsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(stepsAdapter);
-        steps = new ArrayList<>();
-
-        recyclerView.setOnClickListener(new AdapterView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCallback.onStepSelected(steps);
-            }
-        });
+        List<Steps> steps = new ArrayList<>();
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -71,11 +54,6 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         }
 
         return rootView;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -104,13 +82,12 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, mListState);
     }
 
-
     @Override
     public void onStepsItemClick(Steps steps) {
 
         boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 
-        if(tabletSize == false)
+        if(!tabletSize)
         {
             Intent intent = new Intent(getActivity().getApplicationContext(), DetailedStepsActivity.class);
             Bundle bundle2 = new Bundle();
@@ -129,8 +106,6 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         fragmentManager.beginTransaction()
                 .replace(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
                 .commit();
-
         }
-
     }
 }

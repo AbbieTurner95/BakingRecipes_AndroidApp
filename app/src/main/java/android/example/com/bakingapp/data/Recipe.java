@@ -2,10 +2,7 @@ package android.example.com.bakingapp.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +24,7 @@ public class Recipe implements Parcelable {
     @SerializedName("steps")
     private List<Steps> steps;
 
-    protected Recipe(Parcel in) {
+    private Recipe(Parcel in) {
         id = in.readString();
         name = in.readString();
         servings = in.readInt();
@@ -109,4 +106,3 @@ public class Recipe implements Parcelable {
         parcel.writeTypedList(steps);
     }
 }
-

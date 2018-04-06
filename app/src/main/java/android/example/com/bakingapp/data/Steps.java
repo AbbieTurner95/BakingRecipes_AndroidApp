@@ -22,7 +22,7 @@ public class Steps implements Parcelable{
     @SerializedName("thumbnailURL")
     private String thumbnailURL;
 
-    protected Steps(Parcel in) {
+    private Steps(Parcel in) {
         id = in.readInt();
         shortDescription = in.readString();
         description = in.readString();

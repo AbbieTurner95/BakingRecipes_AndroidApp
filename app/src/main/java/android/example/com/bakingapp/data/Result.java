@@ -2,7 +2,6 @@ package android.example.com.bakingapp.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.List;
 
 /**
@@ -19,7 +18,7 @@ public class Result implements Parcelable {
 
     public Result() {}
 
-    protected Result(Parcel in) {
+    private Result(Parcel in) {
         results = in.createTypedArrayList(Recipe.CREATOR);
     }
 

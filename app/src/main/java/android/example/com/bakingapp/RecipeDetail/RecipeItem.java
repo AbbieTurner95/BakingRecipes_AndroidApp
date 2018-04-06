@@ -3,15 +3,11 @@ package android.example.com.bakingapp.RecipeDetail;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.example.com.bakingapp.R;
-import android.example.com.bakingapp.RecipeDetail.DetailedStepsFragment;
-import android.example.com.bakingapp.RecipeDetail.IngredientsFragment;
-import android.example.com.bakingapp.RecipeDetail.StepsFragment;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +20,9 @@ import java.util.List;
  * Created by Abbie on 16/03/2018.
  */
 
-public class RecipeItem extends AppCompatActivity implements StepsFragment.OnStepsClickListener{
-    List<Ingredients> ingredients;
-    List<Steps> steps;
-    Boolean mTwoPane;
+public class RecipeItem extends AppCompatActivity{
+    private List<Ingredients> ingredients;
+    private List<Steps> steps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +35,8 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
         } else {
             Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
         }
+
+        Boolean mTwoPane;
 
         if(findViewById(R.id.linear_layout_tablet_holder) != null){
 
@@ -56,10 +53,7 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
             mTwoPane = true;
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-
         } else {
-
             mTwoPane = false;
         }
 
@@ -92,16 +86,10 @@ public class RecipeItem extends AppCompatActivity implements StepsFragment.OnSte
 
     }
 
-    public boolean isOnline() {
+    private boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnected();
-    }
-
-    @Override
-    public void onStepSelected(List<Steps> steps) {
-
-
     }
 }

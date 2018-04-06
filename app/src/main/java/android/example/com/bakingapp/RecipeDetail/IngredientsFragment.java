@@ -2,7 +2,6 @@ package android.example.com.bakingapp.RecipeDetail;
 
 import android.content.res.Configuration;
 import android.example.com.bakingapp.R;
-import android.example.com.bakingapp.RecipeDetail.IngredientsAdapter;
 import android.example.com.bakingapp.data.Ingredients;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,19 +14,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Abbie on 16/03/2018.
  */
 
-public class IngredientsFragment extends Fragment implements IngredientsAdapter.IngredientsListener{
-    private List<Ingredients> ingredients;
+public class IngredientsFragment extends Fragment{
 
     private RecyclerView recyclerView;
-    private IngredientsAdapter ingredientsAdapter;
     private GridLayoutManager layoutManager;
 
     private final String KEY_RECYCLER_STATE = "recycler_state";
@@ -42,10 +37,10 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
         recyclerView = rootView.findViewById(R.id.recipe_ingredients_recycler_view);
         layoutManager = new GridLayoutManager(getContext(), 2);
-        ingredientsAdapter = new IngredientsAdapter(getContext(), this);
+        IngredientsAdapter ingredientsAdapter = new IngredientsAdapter(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ingredientsAdapter);
-        ingredients = new ArrayList<>();
+        List<Ingredients> ingredients;
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -54,11 +49,6 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         }
 
         return rootView;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -86,11 +76,5 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         mBundleRecyclerViewState = new Bundle();
         mListState = recyclerView.getLayoutManager().onSaveInstanceState();
         mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, mListState);
-    }
-
-
-    @Override
-    public void onIngredientsItemClick(Ingredients ingredients) {
-
     }
 }

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-
 /**
  * Created by Abbie on 21/03/2018.
  */
@@ -27,7 +26,5 @@ public class DetailedStepsActivity extends AppCompatActivity {
         fragmentManager.beginTransaction()
                 .add(R.id.recipe_step_detail_framelayout, detailedStepsFragment)
                 .commit();
-
-
     }
 }

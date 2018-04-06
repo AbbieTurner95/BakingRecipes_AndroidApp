@@ -19,12 +19,10 @@ import java.util.List;
 public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.IngredientsViewHolder>  {
     private List<Ingredients> ingredientsList;
     private final Context mContext;
-    private final IngredientsListener listener;
 
-    public IngredientsAdapter(Context context, IngredientsListener listener){
+    public IngredientsAdapter(Context context){
         ingredientsList = new ArrayList<>();
         mContext = context;
-        this.listener = listener;
     }
 
     public void setIngredientsList(List<Ingredients> ingredientsList){
@@ -67,11 +65,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
         @Override
         public void onClick(View v) {
-            listener.onIngredientsItemClick(ingredientsList.get(getAdapterPosition()));
         }
-    }
-
-    public interface IngredientsListener{
-        void onIngredientsItemClick(Ingredients ingredients);
     }
 }

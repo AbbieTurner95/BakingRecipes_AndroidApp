@@ -4,7 +4,6 @@ import android.example.com.bakingapp.RecipeDetail.RecipeItem;
 import android.example.com.bakingapp.RecipeList.RecipeList;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.FixMethodOrder;
@@ -13,13 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
@@ -43,6 +39,12 @@ public class RecipeOpensTest {
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         onView(withId(R.id.list_llayout))
                 .perform(click())
                 .check(matches(isDisplayed()));
@@ -53,6 +55,12 @@ public class RecipeOpensTest {
         onView(withId(R.id.list_scroll_view))
                 .perform(click());
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         onView(allOf(withId(R.id.recipe_list_recycler_view)))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
     }
@@ -60,6 +68,12 @@ public class RecipeOpensTest {
     @Test
     public void C_recipeItemIsLaunchedTest() {
         B_openRecipeItemTest();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         intended(hasComponent(RecipeItem.class.getName()));
     }
