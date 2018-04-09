@@ -109,7 +109,6 @@ public class DetailedStepsFragment extends Fragment{
             simpleExoPlayerView.setVisibility(View.GONE);
             releasePlayer();
         }
-
         return rootView;
     }
 
