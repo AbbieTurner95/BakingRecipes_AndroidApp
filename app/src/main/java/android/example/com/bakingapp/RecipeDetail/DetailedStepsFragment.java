@@ -39,8 +39,8 @@ public class DetailedStepsFragment extends Fragment{
     long mPlaybackPosition;
     int mCurrentWindow;
     boolean mPlayWhenReady;
-    long position;
     boolean isPlayWhenReady;
+    long exoCurrentPosition;
 
     private SimpleExoPlayerView simpleExoPlayerView;
     private SimpleExoPlayer exoPlayer;
@@ -72,9 +72,9 @@ public class DetailedStepsFragment extends Fragment{
         }
 
         if(savedInstanceState != null) {
-            position = savedInstanceState.getLong(SELECTED_POSITION);
-            if (position != 0) {
-                exoPlayer.seekTo(position);
+            exoCurrentPosition = savedInstanceState.getLong(SELECTED_POSITION);
+            if (exoCurrentPosition != 0) {
+                exoPlayer.seekTo(exoCurrentPosition);
             }
         }
 
@@ -115,7 +115,7 @@ public class DetailedStepsFragment extends Fragment{
 
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong(SELECTED_POSITION, position);
+        outState.putLong(SELECTED_POSITION, exoCurrentPosition);
         outState.putBoolean(VIDEO_PLAY_STATE, isPlayWhenReady);
     }
 
@@ -173,9 +173,7 @@ public class DetailedStepsFragment extends Fragment{
                     new DefaultExtractorsFactory(),null,null);
             exoPlayer.prepare(mediaSource);
 
-
-            long exoCurrentPosition = 0;
-            if (exoCurrentPosition != 0 && !playerStopped){
+            if (exoCurrentPosition != 0){
                 exoPlayer.seekTo(exoCurrentPosition);
             } else {
                 exoPlayer.seekTo(playerStopPosition);
