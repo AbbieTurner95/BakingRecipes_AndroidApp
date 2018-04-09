@@ -114,6 +114,7 @@ public class DetailedStepsFragment extends Fragment{
 
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        exoCurrentPosition = exoPlayer.getCurrentPosition();
         outState.putLong(SELECTED_POSITION, exoCurrentPosition);
         outState.putBoolean(VIDEO_PLAY_STATE, isPlayWhenReady);
     }
