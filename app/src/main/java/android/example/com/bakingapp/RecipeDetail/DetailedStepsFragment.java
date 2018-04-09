@@ -33,7 +33,14 @@ import com.squareup.picasso.Picasso;
  */
 
 public class DetailedStepsFragment extends Fragment{
+    private static final String SELECTED_POSITION = "SELECTED POST.";
+    private static final String VIDEO_PLAY_STATE = "VID PLAY STATE";
     private  Steps step;
+    long mPlaybackPosition;
+    int mCurrentWindow;
+    boolean mPlayWhenReady;
+    long position;
+    boolean isPlayWhenReady;
 
     private SimpleExoPlayerView simpleExoPlayerView;
     private SimpleExoPlayer exoPlayer;
@@ -62,6 +69,13 @@ public class DetailedStepsFragment extends Fragment{
         if (this.getArguments() != null) {
             step = this.getArguments().getParcelable("steps");
             description.setText(step.getDescription());
+        }
+
+        if(savedInstanceState != null) {
+            position = savedInstanceState.getLong(SELECTED_POSITION);
+            if (position != 0) {
+                exoPlayer.seekTo(position);
+            }
         }
 
         stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
@@ -99,11 +113,10 @@ public class DetailedStepsFragment extends Fragment{
         return rootView;
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putLong("LAST POSITION", playerStopPosition);
-        outState.putBoolean("Play video when foreground", mPlayVideoWhenForegrounded);
+        outState.putLong(SELECTED_POSITION, position);
+        outState.putBoolean(VIDEO_PLAY_STATE, isPlayWhenReady);
     }
 
     @Override
@@ -115,6 +128,14 @@ public class DetailedStepsFragment extends Fragment{
 
         exoPlayer.seekTo(playerStopPosition);
         exoPlayer.setPlayWhenReady(mPlayVideoWhenForegrounded);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        exoPlayer.setPlayWhenReady(mPlayWhenReady);
+        exoPlayer.seekTo(mCurrentWindow, mPlaybackPosition);
     }
 
     @Override
@@ -163,8 +184,10 @@ public class DetailedStepsFragment extends Fragment{
     }
 
     private void releasePlayer(){
-        if(exoPlayer != null) {
-            exoPlayer.stop();
+        if (exoPlayer != null) {
+            mPlaybackPosition = exoPlayer.getCurrentPosition();
+            mCurrentWindow = exoPlayer.getCurrentWindowIndex();
+            mPlayWhenReady = exoPlayer.getPlayWhenReady();
             exoPlayer.release();
             exoPlayer = null;
         }
