@@ -13,20 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.squareup.picasso.Picasso;
@@ -36,13 +31,13 @@ import com.squareup.picasso.Picasso;
  */
 
 public class DetailedStepsFragment extends Fragment{
+    public static final String PLAYBACK_POSITION = "playbackPosition";
+    public static final String PLAY_WHEN_READY = "playWhenReady";
+
     private Steps step;
-    private String url;
     private SimpleExoPlayer player;
     private long playbackPosition;
-    public static final String PLAYBACK_POSITION = "playbackPosition";
     private boolean playWhenReady;
-    public static final String PLAY_WHEN_READY = "playWhenReady";
     private SimpleExoPlayerView simpleExoPlayerView;
     private String videoURL;
 
@@ -67,9 +62,7 @@ public class DetailedStepsFragment extends Fragment{
 
         if (savedInstanceState != null) {
             playbackPosition = savedInstanceState.getLong(PLAYBACK_POSITION);
-            Toast.makeText(getContext(),"" + playbackPosition, Toast.LENGTH_SHORT).show();
             playWhenReady = savedInstanceState.getBoolean(PLAY_WHEN_READY);
-
         }
 
         stepidTextview.setText(String.valueOf("Step " + step.getSteps_id()));
