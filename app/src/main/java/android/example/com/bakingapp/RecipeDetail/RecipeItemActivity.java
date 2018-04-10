@@ -9,6 +9,7 @@ import android.example.com.bakingapp.data.Steps;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class RecipeItemActivity extends AppCompatActivity{
         }
 
         if (findViewById(R.id.linear_layout_tablet_holder) != null) {
-            if (savedInstanceState != null) {
+            if (savedInstanceState == null) {
                 DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("steps", steps.get(0));
@@ -86,8 +87,7 @@ public class RecipeItemActivity extends AppCompatActivity{
                     .setPositiveButton("Go to Connection Settings", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                            Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
                             startActivity(intent);
 
                             dialog.cancel();

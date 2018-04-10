@@ -7,6 +7,7 @@ import android.example.com.bakingapp.R;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -31,8 +32,7 @@ public class DetailedStepsActivity extends AppCompatActivity {
                     .setPositiveButton("Go to Connection Settings", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                            Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
                             startActivity(intent);
 
                             dialog.cancel();
