@@ -41,19 +41,19 @@ public class RecipeItem extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
         }
 
-        if(findViewById(R.id.linear_layout_tablet_holder) != null){
+        if (findViewById(R.id.linear_layout_tablet_holder) != null) {
+            if (savedInstanceState != null) {
+                DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("steps", steps.get(0));
+                detailedStepsFragment.setArguments(bundle);
 
-            DetailedStepsFragment detailedStepsFragment = new DetailedStepsFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("steps",steps.get(0));
-            detailedStepsFragment.setArguments(bundle);
+                FragmentManager fragmentManager = getSupportFragmentManager();
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
-                    .commit();
-
+                fragmentManager.beginTransaction()
+                        .add(R.id.detailed_steps_fragment_holder, detailedStepsFragment)
+                        .commit();
+            }
             mTwoPane = true;
         } else {
             mTwoPane = false;

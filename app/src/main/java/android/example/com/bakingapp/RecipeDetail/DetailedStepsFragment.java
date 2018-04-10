@@ -109,11 +109,12 @@ public class DetailedStepsFragment extends Fragment{
                 new DefaultRenderersFactory(getContext()),
                 new DefaultTrackSelector(), new DefaultLoadControl());
 
+        MediaSource mediaSource = buildMediaSource(uri);
+
         simpleExoPlayerView.setPlayer(player);
+        player.prepare(mediaSource, true, false);
         player.setPlayWhenReady(playWhenReady);
         player.seekTo( playbackPosition);
-        MediaSource mediaSource = buildMediaSource(uri);
-        player.prepare(mediaSource, true, false);
 
     }
 
