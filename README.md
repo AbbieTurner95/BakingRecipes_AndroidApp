@@ -25,6 +25,8 @@ As a working Android developer, you often have to create and implement apps wher
 ![screen shot 2018-04-10 at 10 30 15](https://user-images.githubusercontent.com/33655422/38549191-65c123d4-3cab-11e8-9ed7-8183c3dd4944.png)
 ![screen shot 2018-04-10 at 10 30 38](https://user-images.githubusercontent.com/33655422/38549185-6453f8d2-3cab-11e8-94a2-87e6c48a28b6.png)
 ![screen shot 2018-04-10 at 10 31 05](https://user-images.githubusercontent.com/33655422/38549186-648affda-3cab-11e8-888d-ccc36ff8cf3d.png)
+![screen shot 2018-04-10 at 14 34 57](https://user-images.githubusercontent.com/33655422/38560293-3bb6e002-3ccd-11e8-9b00-99d06b8da77c.png)
+
 
 
 ![screen shot 2018-04-10 at 10 37 27](https://user-images.githubusercontent.com/33655422/38549187-64a37d80-3cab-11e8-8b88-f59d0936f278.png)
