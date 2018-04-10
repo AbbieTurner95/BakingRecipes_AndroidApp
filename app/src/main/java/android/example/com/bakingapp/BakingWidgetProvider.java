@@ -16,12 +16,6 @@ public class BakingWidgetProvider extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_widget_provider);
-
-        Intent intent = new Intent(context, RecipeListActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        views.setOnClickPendingIntent(R.id.recipe_list_recycler_view_widget, pendingIntent);
-
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
