@@ -1,7 +1,7 @@
 package android.example.com.bakingapp;
 
-import android.example.com.bakingapp.RecipeDetail.RecipeItem;
-import android.example.com.bakingapp.RecipeList.RecipeList;
+import android.example.com.bakingapp.RecipeDetail.RecipeItemActivity;
+import android.example.com.bakingapp.RecipeList.RecipeListActivity;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -32,7 +32,7 @@ import static org.hamcrest.core.AllOf.allOf;
 public class RecipeOpensTest {
 
     @Rule
-    public IntentsTestRule<RecipeList> mRecipeListTestRule = new IntentsTestRule<>(RecipeList.class);
+    public IntentsTestRule<RecipeListActivity> mRecipeListTestRule = new IntentsTestRule<>(RecipeListActivity.class);
 
     @Test
     public void A_checkRecipeListShowsTest() {
@@ -75,6 +75,6 @@ public class RecipeOpensTest {
             e.printStackTrace();
         }
 
-        intended(hasComponent(RecipeItem.class.getName()));
+        intended(hasComponent(RecipeItemActivity.class.getName()));
     }
 }

@@ -12,4 +12,5 @@
     <string name="image_of_recipe_item">Image of Recipe item</string>
     <string name="pink_cake_icon">Pink cake icon</string>
     <string name="person_icon_next_to_serving_amount">Person icon next to serving amount</string>
+    <string name="error_getting_recipe_data">Error getting recipe data!</string>
 </resources>

@@ -1,6 +1,8 @@
 package android.example.com.bakingapp.RecipeDetail;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.example.com.bakingapp.R;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Steps;
@@ -19,7 +21,7 @@ import java.util.List;
  * Created by Abbie on 16/03/2018.
  */
 
-public class RecipeItem extends AppCompatActivity{
+public class RecipeItemActivity extends AppCompatActivity{
     private List<Ingredients> ingredients;
     private List<Steps> steps;
     private Boolean mTwoPane;
@@ -37,7 +39,7 @@ public class RecipeItem extends AppCompatActivity{
             ingredients = this.getIntent().getParcelableArrayListExtra("ingredients");
             steps = this.getIntent().getParcelableArrayListExtra("steps");
         } else {
-            Toast.makeText(getApplicationContext(), "Error getting recipe data!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.error_getting_recipe_data, Toast.LENGTH_LONG).show();
         }
 
         if (findViewById(R.id.linear_layout_tablet_holder) != null) {
@@ -81,7 +83,16 @@ public class RecipeItem extends AppCompatActivity{
                     .setCancelable(false)
                     .setMessage("You seem to have lost your connection, please connect and try again!")
                     .setIcon(R.drawable.ic_signal_cellular_connected_no_internet_0_bar_black_24dp)
-                    .show();
+                    .setPositiveButton("Go to Connection Settings", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                            startActivity(intent);
+
+                            dialog.cancel();
+                        }
+                    }).show();
         }
     }
 

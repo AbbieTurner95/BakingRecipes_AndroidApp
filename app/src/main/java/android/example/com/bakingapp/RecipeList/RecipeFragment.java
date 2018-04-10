@@ -3,7 +3,7 @@ package android.example.com.bakingapp.RecipeList;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.example.com.bakingapp.R;
-import android.example.com.bakingapp.RecipeDetail.RecipeItem;
+import android.example.com.bakingapp.RecipeDetail.RecipeItemActivity;
 import android.example.com.bakingapp.data.Ingredients;
 import android.example.com.bakingapp.data.Recipe;
 import android.example.com.bakingapp.data.Steps;
@@ -124,7 +124,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeClic
         List<Steps> steps;
         steps = recipe.getSteps();
 
-        Intent intent = new Intent(getActivity(), RecipeItem.class);
+        Intent intent = new Intent(getActivity(), RecipeItemActivity.class);
         intent.putParcelableArrayListExtra("ingredients", (ArrayList<? extends Parcelable>) ingredients);
         intent.putParcelableArrayListExtra("steps", (ArrayList<? extends Parcelable>) steps);
         startActivity(intent);

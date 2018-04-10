@@ -31,8 +31,8 @@ import com.squareup.picasso.Picasso;
  */
 
 public class DetailedStepsFragment extends Fragment{
-    public static final String PLAYBACK_POSITION = "playbackPosition";
-    public static final String PLAY_WHEN_READY = "playWhenReady";
+    public static final String PLAYBACK_POSITION = "playback_position";
+    public static final String PLAY_WHEN_READY = "play_when_ready";
 
     private Steps step;
     private SimpleExoPlayer player;
@@ -129,7 +129,6 @@ public class DetailedStepsFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
-
         if ((Util.SDK_INT <= 23 || player == null)) {
             initializePlayer(Uri.parse(videoURL));
         }
@@ -137,7 +136,8 @@ public class DetailedStepsFragment extends Fragment{
 
     private void releasePlayer() {
         if (player != null) {
-
+            playbackPosition = player.getCurrentPosition();
+            playWhenReady = player.getPlayWhenReady();
             player.release();
             player = null;
         }
@@ -145,8 +145,6 @@ public class DetailedStepsFragment extends Fragment{
 
     @Override
     public void onPause() {
-        playbackPosition = player.getCurrentPosition();
-        playWhenReady = player.getPlayWhenReady();
         super.onPause();
         if (Util.SDK_INT <= 23) {
             releasePlayer();
@@ -156,8 +154,6 @@ public class DetailedStepsFragment extends Fragment{
     @Override
     public void onStop() {
         super.onStop();
-        playbackPosition = player.getCurrentPosition();
-        playWhenReady = player.getPlayWhenReady();
         if (Util.SDK_INT > 23) {
             releasePlayer();
         }

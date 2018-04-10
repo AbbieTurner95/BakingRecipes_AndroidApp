@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="android.example.com.bakingapp.RecipeDetail.RecipeItem"
+    tools:context="android.example.com.bakingapp.RecipeDetail.RecipeItemActivity"
     android:id="@+id/linear_layout_tablet_holder">
 
     <LinearLayout

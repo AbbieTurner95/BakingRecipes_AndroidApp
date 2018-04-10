@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.is;
 public class ExoPlayerTest {
 
     @Rule
-    public ActivityTestRule<RecipeList> mActivityTestRule = new ActivityTestRule<>(RecipeList.class);
+    public ActivityTestRule<RecipeListActivity> mActivityTestRule = new ActivityTestRule<>(RecipeListActivity.class);
 
     @Test
     public void exoPlayerTest() {

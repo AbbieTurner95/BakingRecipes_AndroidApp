@@ -12,19 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".RecipeList.RecipeList">
+        <activity android:name=".RecipeList.RecipeListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeDetail.RecipeItem" />
+        <activity android:name=".RecipeDetail.RecipeItemActivity" />
 
         <activity android:name=".RecipeDetail.DetailedStepsActivity"
             android:label="@string/detailed_step_title"
             android:launchMode="singleTop"
-            android:parentActivityName=".RecipeList.RecipeList">
+            android:parentActivityName=".RecipeList.RecipeListActivity">
         </activity>
 
         <receiver android:name=".BakingWidgetProvider">

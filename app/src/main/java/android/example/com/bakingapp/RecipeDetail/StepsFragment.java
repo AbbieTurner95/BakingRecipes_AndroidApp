@@ -45,7 +45,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsListene
         StepsAdapter stepsAdapter = new StepsAdapter(getContext(), this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(stepsAdapter);
-        List<Steps> steps = new ArrayList<>();
+        List<Steps> steps;
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
